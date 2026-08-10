@@ -1,0 +1,22 @@
+{
+  "name": "harness-vet",
+  "version": "0.1.0",
+  "description": "Adoption gate for external agent tooling. Vet a skill, plugin, MCP server, rules file, repo, or paper before adding it to your harness: install-state and overlap checked against what you already run, claims verified by running them, context cost priced, per-component ADOPT/ADAPT/EXTRACT/SKIP/REJECT verdicts with re-eval triggers — and an audit dividend that often outvalues the verdict.",
+  "author": {
+    "name": "StartupBros / House of Vibe",
+    "url": "https://houseofvibe.ai"
+  },
+  "homepage": "https://houseofvibe.ai",
+  "repository": "https://github.com/StartupBros-com/harness-vet",
+  "license": "MIT",
+  "keywords": [
+    "house-of-vibe",
+    "skills",
+    "harness",
+    "vetting",
+    "adoption",
+    "context-engineering",
+    "supply-chain",
+    "claude-code"
+  ]
+}
