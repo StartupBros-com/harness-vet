@@ -51,6 +51,8 @@ Context (established facts, do not re-derive):
 
 Your task: <reader or verifier brief>. Report against THIS harness, not a
 generic one. Evidence means file:line or the output of a command you ran.
+Platform or model facts newer than your training data get checked against
+live documentation — never read newer-than-you as fabricated.
 ```
 
 ## Freshness

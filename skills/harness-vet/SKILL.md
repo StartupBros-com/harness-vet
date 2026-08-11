@@ -34,6 +34,19 @@ readers at 8, keep the verify fleet no wider than the readers, and batch claims
 per verifier by subsystem: fan-out that scales with findings instead of a cap
 is runaway spend, not thoroughness.
 
+**Interaction.** Two decisions are genuinely the operator's, and only in an
+interactive session: sweep sizing on a large list-candidate, and landing
+depth at ship (inside phase 7's hard edges). Offer each as concrete options —
+sizing: the standard two-stage vet (score every entry, then at most 3
+deep-vets), a cheaper headline triage before full readers, or a named path,
+each with its planned reader count; landing: apply now, PR for review, or
+issue only. Treat the run as unattended unless a live operator invoked the
+vet in an interactive session — when in doubt, unattended. Unattended: sizing
+defaults to the standard two-stage vet; landing follows the digest's
+conventions, else PR-for-review. Record the decision taken, chosen or
+defaulted, in the eval note: a question an unattended run cannot answer is a
+stall, not a courtesy.
+
 ## 1. Intake
 
 Normalize the candidate into a scratch directory before any judgment:
@@ -94,7 +107,10 @@ dependencies, staleness signals (commit texture over star count), red flags,
 overlap with the digest, suggested verdict. Force a structured schema where the
 tooling supports it — then spot-check every reader's output by eye: placeholder
 text that passes schema validation is a real failure mode [measured: 1 of 8
-readers once returned an empty-but-valid stub].
+readers once returned an empty-but-valid stub], and a reader whose training
+predates the candidate will read genuinely-new platform facts as fabrications
+— the digest's live-docs clause exists for this [measured: one upstream SHA
+comparison refuted a "forged content" alarm over post-cutoff model IDs].
 
 Done when: every candidate component appears in exactly one reader's report and
 none is empty.
@@ -191,5 +207,13 @@ operator will find (e.g. `docs/vets/<candidate>.md`). Two hard edges:
   MCP server — are proposed with evidence and left for the operator to apply.
 - Cite shipped state from merged artifacts; drafts, and notes about drafts,
   drift [measured].
+
+Before an extraction that modifies harness files lands, review the ported
+text adversarially: use the harness's own inward-review convention where the
+digest found one; otherwise dispatch two or three subagent skeptics —
+fidelity to the source, conflict with what the harness already carries,
+utility of the ported wording — each given the author's reasoning as claims
+to attack [measured: this review forced real trims on a doctrine port before
+it merged].
 
 Done when: the closing checklist in VERDICTS.md passes.

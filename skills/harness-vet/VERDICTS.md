@@ -11,6 +11,11 @@
   disguise.
 - **EXTRACT** — the idea clears the bar, the artifact doesn't: port the
   pattern into the harness's own idiom and leave the candidate's code out.
+  When the ported material shapes future agent behavior (prompts, doctrine,
+  rules), absence from the incumbent is not evidence of value — run it
+  against one live task before landing, or land it carrying an explicit
+  unverified-value marker naming the measurement that settles it; the
+  marker stands until that measurement runs.
 - **SKIP** — nothing wrong, nothing needed: duplicates capability the digest
   already lists, or fails the price test. Duplication is SKIP even when the
   candidate is well-made.
@@ -40,7 +45,9 @@ system:
 0. Frontmatter, if the memory system uses it: name, a verdict-dense one-line
    description, and a pointer back to the vet run (session id, transcript
    path, or PR) so the note traces to its evidence.
-1. First line of the body: the wholesale verdict.
+1. First line of the body: the wholesale verdict, followed by a one-line
+   record of run decisions (sweep scope, landing depth — chosen or
+   defaulted).
 2. `Measured, not inferred:` — the commands run and numbers reproduced that
    carried the verdict.
 3. Per-component table: component / verdict / one-line evidence.
@@ -57,7 +64,10 @@ The vet is done when every line passes:
 - [ ] Adopted / adapted / extracted changes landed as reviewable artifacts,
       each verified by running it, not by reading its diff.
 - [ ] Landed changes passed the review tier the harness's conventions assign
-      to their risk level — or the eval note names why none was needed.
+      to their risk level; extractions touching harness files ran their
+      adversarial review, and behavior-shaping ports carry a live-task result
+      or their named deciding measurement — or the eval note names why none
+      was needed.
 - [ ] Deferred ambitions filed as tracked issues, not built mid-vet.
 - [ ] Security-posture proposals handed to the operator with evidence,
       explicitly awaiting sign-off — none silently applied.
