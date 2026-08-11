@@ -37,6 +37,16 @@ vetted sources" the convergence below is unusually strong.
   delivered; single scoped components occasionally earned ADOPT, the modal
   outcome was EXTRACT of a handful of patterns, and two vets' chief value
   was the drift they exposed in the host harness. [measured-here]
+- The starkest duplication receipt: a ~64KB, 7-file commercial skill's
+  detection verdicts came back identical, item for item, to the authoring
+  harness's existing ~170-line doctrine on a 7-item planted audit — same
+  hits, same miss, zero false positives, both arms (2026-08-10).
+  [measured-here]
+- The audit dividend generalizes: in 3 of 3 dogfood runs, testing the
+  candidate's described failure mode against the host harness produced the
+  run's chief finding — a doctrine blind spot, a silently-failing nightly
+  auth job, and a routing proxy structurally discarding model reasoning
+  (2026-08). [measured-here]
 
 ## Tool count is a priced quantity
 
