@@ -46,7 +46,7 @@ From the [House of Vibe marketplace](https://github.com/StartupBros-com/hov-mark
 
 Then: `/harness-vet <repo-url | local-path | post-or-paper-link>`
 
-The skill is user-invoked only (`disable-model-invocation: true`) — a tool whose thesis is "don't clutter your harness" costs you zero always-on context.
+The skill is user-invoked only (`disable-model-invocation: true`) — a tool whose thesis is "don't clutter your harness" costs you zero always-on context. In an interactive session it asks at exactly two decision points (sweep scope on large list-candidates, landing depth at ship); unattended runs take named defaults and record them in the eval note, so background invocations never stall on a question.
 
 ## What this is not
 
