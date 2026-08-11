@@ -56,7 +56,9 @@ generic one. Evidence means file:line or the output of a command you ran.
 ## Freshness
 
 Rebuild the inventory sections each run — the sweep is cheap and the state
-drifts. Carry forward only the conventions prose. If a conversation-history
+drifts, including names: one run's digest pointed at a skill's old deploy
+name and handed every reader a dead path until one caught it [measured].
+Carry forward only the conventions prose. If a conversation-history
 index or memory search backs the prior-verdict lookup, check the index's
 freshness before trusting an absent result: a stale index reads as "never
 evaluated" [measured: a 4-day-stale index hid the newest eval on the

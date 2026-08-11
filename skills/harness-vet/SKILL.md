@@ -10,8 +10,7 @@ disable-model-invocation: true
 ---
 
 <!-- Mined from ~15 real adoption evaluations (2026-07/08) on the authoring
-     harness; the [measured] tags below refer to those runs. Receipts and
-     external citations: EVIDENCE.md. -->
+     harness. -->
 
 You are vetting a **candidate** — a skill, plugin, MCP server, rules file, repo,
 or paper someone says belongs in this harness. The default verdict is SKIP:
@@ -52,8 +51,10 @@ Normalize the candidate into a scratch directory before any judgment:
   install fanned out to five agent trees; the uninstall had to be verified
   across all five].
 - A candidate that is itself a list (an awesome-repo, a marketplace) gets a
-  two-stage vet: sweep readers score every entry against the digest, then at
-  most 3 entries per run get the full phases 3-6.
+  two-stage vet: sweep readers — a lighter-weight variant of the Phase-3
+  readers below, scoring every entry against the digest with no full report —
+  triage the whole list, then at most 3 entries per run get the full phases
+  3-6.
 - No candidate named → ask for one; this skill vets one candidate per run.
 
 Then two lookups, both written down before reading further:
@@ -82,7 +83,8 @@ agents each re-discovering harness state is the failure the digest exists to
 prevent [measured].
 
 Done when: the digest block exists with every template section filled or
-explicitly marked absent, and it opens the first subagent prompt of the run.
+explicitly marked absent, every path and name it states was checked to exist
+this run, and it opens the first subagent prompt of the run.
 
 ## 3. Read
 
@@ -106,6 +108,13 @@ command the verifier ran. Empirical beats documentary:
 - Run the candidate's own tests and benchmarks in an isolated sandbox (fresh
   HOME, scratch env). A bench that won't compile or a test that OOMs is a
   verdict input [measured].
+- A prompt-skill or doctrine candidate gets the behavioral test: one
+  planted-defect fixture (defects AND honest controls — false accusations
+  count against an arm; the answer key stays with the judge), run bare, with
+  the candidate, and with the incumbent the digest names. The candidate must
+  beat what you already own, not just the bare model; where the digest lists
+  a paired-comparison instrument, that renders the formal verdict [measured:
+  the incumbent arm settled both gating vets].
 - Fact-check the candidate's claims about platform features against official
   docs — a popular skill pack shipped fabricated feature documentation
   [measured].
@@ -114,6 +123,16 @@ command the verifier ran. Empirical beats documentary:
   directions: one mined probe showed a candidate guard passing 10/10 bypasses
   the host blocked, and the same vet's rule diff surfaced 6 gaps in the
   host's own denylist [measured].
+- When the candidate describes a mechanism or failure mode, test your own
+  harness for it — the audit dividend usually lives there [measured: 3 of 3
+  dogfood runs; the third found a routing proxy silently dropping model
+  reasoning every turn].
+- Your own coverage is a claim too: a component headed for
+  SKIP-as-already-covered gets its covering mechanism AND control surface
+  named and verified under the same REFUTED default — "we have it" without
+  how it is steered is coverage asserted, not shown [measured: an operator
+  prompt, not the vet, surfaced an unexploited control lever inside an
+  asserted "already covered"].
 - Reproduce any number before citing it; recorded verification numbers decay
   [measured].
 - Web listings and READMEs settle nothing; only running things does [measured:
