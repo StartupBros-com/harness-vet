@@ -43,6 +43,9 @@ not an empty assessment.
   the evaluator may impose on that clause alone. Project scope is no sandbox.
 
 Roll up counts **per target**, with separate delivery and content verdicts.
+Roll up only the targets this run was asked about or inferred; a prior verdict
+or another scope's state belongs in the explanation, never as an extra rollup
+row that reads as a verdict nobody requested.
 A multi-target run shares artifact checks; it does not duplicate every reader.
 Triaged-only entries are not deep-vet approvals. Proposed, tested, landed and
 runtime-verified are different states, not synonyms for ADOPT.

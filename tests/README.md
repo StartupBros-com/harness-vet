@@ -107,9 +107,10 @@ Neutral prompt to accompany the four skill documents and one scenario:
 ```text
 Apply the supplied harness-vet method to the hypothetical scenario below.
 Treat its stated observations as established facts for this case. Return exactly one
-final rollup row per target using canonical target IDs project-a/project-b/global,
-or unresolved when no destination is defensible. Put component and delivery
-sub-verdicts in the explanation, not in extra rollup rows. Explain the verdict, shared artifact findings versus target
+final rollup row per target the scenario asks about, using canonical target IDs
+project-a/project-b/global, or unresolved when no destination is defensible.
+Put component and delivery sub-verdicts, prior verdicts and the state of any
+other scope in the explanation, not in extra rollup rows. Explain the verdict, shared artifact findings versus target
 fit, placement, activation and any required packaging change. State evidence
 limits and the relevant retry or review conditions; include provenance,
 update and rollback requirements when proposing adoption or adaptation.

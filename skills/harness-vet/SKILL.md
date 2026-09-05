@@ -261,7 +261,8 @@ candidate at another scope):
 
 Done when: every component still alive after phase 4 has all five price
 checks answered in writing, with any tool-count price measured or marked
-PARTIAL.
+PARTIAL. A required check left PARTIAL is not a pass: that component is SKIP
+pending the named measurement, never ADOPT or ADAPT.
 
 ## 6. Verdict
 
