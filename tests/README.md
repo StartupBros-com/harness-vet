@@ -1,15 +1,20 @@
 # Scope decision fixtures
 
-[`scope_cases.json`](scope_cases.json) contains eight independent behavioral
-fixtures for the v0.2.0 scope decisions in
+[`scope_cases.json`](scope_cases.json) contains thirteen independent behavioral
+fixtures for the v0.2.0 and v0.2.1 scope decisions in
 [`SKILL.md`](../skills/harness-vet/SKILL.md),
 [`DIGEST.md`](../skills/harness-vet/DIGEST.md),
 [`EVIDENCE.md`](../skills/harness-vet/EVIDENCE.md) and
 [`VERDICTS.md`](../skills/harness-vet/VERDICTS.md).
 
-The final single-run decision smoke passed eight cases with independent
+The v0.2.0 single-run decision smoke passed its eight cases with independent
 semantic review; the prior rejected draft failed its negative control. See
 [final responses](scope-smoke-final.json) and [initial strict-score failures](scope-smoke-results.json).
+The five v0.2.1 cases (unlicensed verbatim copy, the candidate's own copy at
+another scope, a target's first instruction surface, an unmeasured tool-heavy
+MCP server, a skill pack with operator-named skills) plus the eight v0.2.0
+cases were rerun against the v0.2.1 files; see
+[the v0.2.1 receipt](scope-smoke-v0.2.1.json) and [VERIFICATION.md](VERIFICATION.md).
 Their scenarios stipulate synthetic observations so a model can make a decision
 without external access. Statements that a scenario's runtime checks passed
 are inputs to that hypothetical case, not claims that this repository task ran
@@ -28,7 +33,7 @@ semantic errors; they are not strings to match mechanically.
 
 Run this from the repository root with Node.js already available. It needs no
 package installation, external access, test engine or CI configuration. It
-checks JSON parsing, schema version and fields, exactly eight cases, unique
+checks JSON parsing, schema version and fields, exactly thirteen cases, unique
 nonempty IDs, nonempty scenarios and expected arrays, valid targets and
 verdicts, and nonempty forbidden-claim strings.
 
@@ -50,7 +55,7 @@ const ids = new Set();
 fields(fixture, ['schema_version', 'cases']);
 assert.equal(fixture.schema_version, 1);
 assert(Array.isArray(fixture.cases));
-assert.equal(fixture.cases.length, 8);
+assert.equal(fixture.cases.length, 13);
 for (const item of fixture.cases) {
   fields(item, ['id', 'scenario', 'expected', 'forbidden_claims']);
   assert(nonempty(item.id));

@@ -23,7 +23,8 @@ folders but exclude dependencies and worktree copies unless explicitly targeted.
   including callable global on-demand skills, CLIs and subagents. Separate
   activation/name conflicts from semantic overlap. Record covering mechanism,
   invocation path, access and constraints. An off, inaccessible or unrelated
-  project's skill is not coverage merely because its files exist.
+  project's skill is not coverage merely because its files exist, and neither
+  is the candidate's own copy at another scope.
 - **Tooling and boundaries**: effective MCP/services, tool grants, hooks,
   permissions and sandboxing. Distinguish a requested permission from an
   observed effect. Scope/discovery restrictions are not execution containment.
@@ -50,8 +51,10 @@ Context (established facts, do not re-derive):
   - Delivery: <destination, review/testing tools, landing depth, update/rollback owner>
 - Local vet history: <counts if known; otherwise imported prior, not local data>
 - Standing rule: SKIP-as-covered requires equivalent capability demonstrably
-  available for THIS target's task, including callable global on-demand tools.
-  Scope can change fit and cost, not erase applicable artifact safety findings.
+  available for THIS target's task, including callable global on-demand tools;
+  a copy of the candidate at another scope is a placement question first
+  (VERDICTS.md), not automatic coverage. Scope can change fit and cost, not
+  erase applicable artifact safety findings.
 
 Your task: <reader/verifier brief>. Evidence means file:line, observed output
 or a fetched primary source. New platform/model facts get live-doc checks,
