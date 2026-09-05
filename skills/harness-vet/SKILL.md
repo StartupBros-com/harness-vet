@@ -46,7 +46,12 @@ an unresolved choice changes the work and a live operator can answer. For an
 unattended run with no defensible destination, continue the assessment with
 scope unresolved and no installation, never default to global installation.
 Large list-candidates default to a whole-list triage then at most 3 deep-vets;
-offer lighter sizing interactively when it matters. Landing follows explicit
+operator-named entries fill that slate before triage-ranked ones, and when the
+named entries exceed it, say so and offer the sizing choice — more runs, or a
+wider slate whose spend the operator accepts — rather than dropping names
+silently; with no live operator, deep-vet the named entries up to the cap in
+the order given and record the excess as an unresolved sizing choice. Landing
+follows explicit
 report-only, issue-only, PR, or apply instructions, else the digest's
 conventions, else PR-for-review. Record chosen or inferred decisions and
 uncertainties. A recommendation is not permission to enable tooling.
@@ -55,8 +60,13 @@ uncertainties. A recommendation is not permission to enable tooling.
 
 Resolve the target project(s), global scope, or unresolved scope before
 inventorying. Verify each named path exists and identify the intended task and
-runtime: interactive, unattended, local, or hosted. Read DIGEST.md's discovery
-sweep now for the install-state and prior-note lookups; phase 2 freezes it.
+runtime: interactive, unattended, local, or hosted. A task is concrete when it
+names the artifact or outcome the target's sessions must produce and how a
+result is judged; a domain label ("help with SEO") is not a task. Phase 4
+derives its fixture from the concrete task, so an unstated one is an unresolved
+choice to ask about or record, not a gap to fill by inference. Read DIGEST.md's
+discovery sweep now for the install-state and prior-note lookups; phase 2
+freezes it.
 
 Normalize the candidate into a scratch directory before any judgment:
 
@@ -74,11 +84,15 @@ Normalize the candidate into a scratch directory before any judgment:
   harness merely to inspect a candidate [measured: a registry
   install fanned out to five agent trees; the uninstall had to be verified
   across all five].
-- A candidate that is itself a list (an awesome-repo, a marketplace) gets a
+- A candidate that is itself a list — entries independently sourced, licensed
+  and versioned (an awesome-repo, a marketplace of separate plugins) — gets a
   two-stage vet: sweep readers — a lighter-weight variant of the Phase-3
   readers below, scoring every entry against the digest with no full report —
   triage the whole list, then at most 3 entries per run get the full phases
-  3-6.
+  3-6. One repo, one manifest and one license bundling many components (a
+  skill pack) is a multi-component candidate, not a list: phase 3 batches its
+  components by subsystem under the reader cap, reads operator-named
+  components in full first, and marks the rest triaged, not deep-vetted.
 - No candidate named → ask for one; this skill vets one candidate per run.
 
 Read the candidate's license and terms during intake — a genuine restriction
@@ -92,14 +106,22 @@ as disqualifying: where the operator already runs tooling of that class,
 their uptime is evidence about enforcement that the clause text is not
 [measured: a vet called a candidate's browser automation terms-violating
 while this harness's own terminal review gate drove the same site the same
-way — hundreds of runs, months, no account action].
+way — hundreds of runs, months, no account action]. No license at all is a
+different finding from a restrictive clause: with no grant, a verbatim copy
+(ADOPT, or ADAPT by copy-out) waits on permission the operator obtains from
+the author, while EXTRACT of a demonstrated pattern in the target's own words
+stays open. Record it as a licensing finding whose retry predicate is the grant.
 
 Then two lookups, both written down before reading further:
 
 - **Install state.** Search relevant global, project, nested, and plugin
   locations, lock files and config. Record all copies, revisions and effective
   precedence, not just "present". A partial install or diverged copies changes
-  the job to reconciliation, not another install [measured].
+  the job to reconciliation, not another install [measured]. Reconciliation
+  reads each diverged copy as its own revision: diff them in phase 3, name
+  which content is authoritative and why (upstream pin, latest verified edit,
+  operator statement), and carry the diff summary and that rationale into the
+  eval note.
 - **Prior verdict.** Search discovered shared and target-project note/index
   locations by source identity and aliases, not just this session's memory.
   Record paths searched and inaccessible locations; absent evidence is not
@@ -129,9 +151,14 @@ the frozen working context for the inline evaluation.
 
 ## 3. Read
 
-One reader per candidate category (docs, skills, commands, hooks, code, ...),
-each carrying the digest. Read instruction files and bundled executables in
-full, not a prefix; inventory unread files explicitly. Per component report:
+One reader per candidate category (docs, skills, commands, harness hooks,
+repo-level auto-run code such as git hooks and install scripts, bundled code,
+...), each carrying the digest. Read instruction files and bundled executables
+in full, not a prefix; inventory unread files explicitly. When categories
+outnumber the reader cap, execution surfaces — bundled code, servers,
+installers, auto-run hooks — take reader slots before documentation, and a
+category left without a reader is recorded as a coverage gap against the
+digest's component inventory. Per component report:
 purpose, mechanism, dependencies, maintenance signals, red flags, and fit and
 overlap for each target. A matching name or broad topic is not equal utility. Force a structured schema where the
 tooling supports it — then spot-check every reader's output by eye: placeholder
@@ -194,13 +221,20 @@ plus its evidence.
 
 ## 5. Price
 
-For each component still alive, before any verdict of ADOPT or ADAPT:
+For each component still alive, before any verdict of ADOPT or ADAPT (the
+placement check below also runs before any verdict that rests on a copy of the
+candidate at another scope):
 
 - **Context cost.** Price effective exposure per target: discovery metadata,
   invoked bodies, tools/services, human discoverability, and upkeep. Prefer
   available runtime usage/cost reports; label estimates. Include the whole
   enabled bundle, not only the desired skill. Count a project-local cost in
-  that project's sessions, not every unrelated session.
+  that project's sessions, not every unrelated session. When a component adds
+  tools to a session — an MCP server, a tool-heavy plugin — price the count by
+  measurement, not narrative: run the phase-4 representative tasks with and
+  without the added tools and report selection accuracy or misrouting; if that
+  cannot run, record PARTIAL with the deciding measurement (EVIDENCE.md:
+  encode the test, never a fixed N).
 - **Armor test.** A rule needing more caveats than it has clauses has already
   failed the always-on bar [measured].
 - **Placement and off-switch.** Choose the narrowest supported placement that
@@ -226,7 +260,9 @@ For each component still alive, before any verdict of ADOPT or ADAPT:
   lacks a certificate [measured].
 
 Done when: every component still alive after phase 4 has all five price
-checks answered in writing.
+checks answered in writing, with any tool-count price measured or marked
+PARTIAL. A required check left PARTIAL is not a pass: that component is SKIP
+pending the named measurement, never ADOPT or ADAPT.
 
 ## 6. Verdict
 
@@ -249,16 +285,24 @@ report and explicit unshipped state, not forced commits or external issues.
 For approved changes, use the target's own conventions from the digest:
 now-tier changes as reviewable commits or PRs, deferred ambitions as tracked
 issues rather than mid-vet side-builds, and one durable eval note (template:
-VERDICTS.md) in whatever memory the harness keeps — or, where the digest
-found no memory system, as a plain committed file in a stated location the
-operator will find (e.g. `docs/vets/<candidate>.md`). Two hard edges:
+VERDICTS.md) where a future vet of that target will search: a note system
+discoverable from the target itself, or, where the digest found none, a plain
+committed file in a stated location the operator will find (e.g.
+`docs/vets/<candidate>.md`). The agent's private per-project memory holds a
+pointer to that note, not the note, unless the digest verified it is where
+that target's vets are searched. Two hard edges:
 
 - Security-posture changes — guards, permissions, hooks, enabling a plugin or
   MCP server — are proposed with evidence and left for the operator to apply.
   Name the target path/config and activation scope; approval for a local skill
-  does not authorize global enablement. Preserve licenses, pinned provenance,
-  local changes and an update/rollback owner. Do not delete shadowed copies
-  or migrate other projects as an incidental cleanup.
+  does not authorize global enablement. A target with no instruction-loading
+  surface of any kind gets its first skills directory, rules file or plugin
+  registration proposed with the exact path for the operator to create, not
+  landed; adding to any existing surface is the routine now-tier path.
+  Preserve licenses, pinned provenance, local changes and an
+  update/rollback owner. Do not delete shadowed copies or migrate other
+  projects as an incidental cleanup; a consolidation the operator asked for is
+  proposed with its evidence, not performed.
 - Cite shipped state from merged artifacts; drafts, and notes about drafts,
   drift [measured].
 

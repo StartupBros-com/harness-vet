@@ -9,13 +9,17 @@ not an empty assessment.
 
 - **ADOPT**: use as-is at the recorded supported placement; verified utility
   exceeds target-specific cost. A native project install is ADOPT, not ADAPT
-  merely because it is narrower than global.
+  merely because it is narrower than global. A verbatim copy — here or by
+  ADAPT copy-out — needs a license that grants it; none means EXTRACT of a
+  demonstrated pattern, else SKIP pending the grant.
 - **ADAPT**: utility is demonstrated but delivery must change. Name the exact
   change: select permitted components, remove an updater, alter activation,
   patch/fork packaging, or convert a global-only installer to project-local.
   Prefer a native scoped plugin install when it suffices. If per-component
   controls are unavailable, price the whole enabled bundle or explicitly
   adapt it; never invent a per-skill switch or assume all platforms lack one.
+  A copied-out component runs standalone in the phase-4 sandbox, every
+  outside-directory reference resolved, before ADAPT is rendered.
 - **EXTRACT**: port a useful pattern, not the candidate's implementation, into
   the target's idiom. Behavior-shaping ports need a live-task result before
   landing or an explicit unverified-value marker with its deciding measurement.
@@ -23,9 +27,15 @@ not an empty assessment.
 - **SKIP**: equivalent capability is already usable for the target task, no
   demonstrated need exists, or costs exceed benefit. A broad topic/name match
   alone is not duplication. Callable global on-demand tools count; disabled,
-  inaccessible or other-project-only copies do not automatically count.
-  Insufficient verification may mean SKIP pending evidence, never a fabricated
-  negative benchmark or a security REJECT.
+  inaccessible or other-project-only copies do not automatically count. Judge
+  coverage at the grain of the target task's capabilities, not the candidate's
+  packaging: a server spanning several data sources is covered only where each
+  needed capability is. A copy of the candidate itself at another scope is a
+  placement question, not an incumbent: where the copies diverge, or the
+  operator asked to narrow where it loads, reconcile (ADAPT); only an
+  undiverged copy verified to serve this target, with no narrowing asked, is
+  recorded as covered. Insufficient verification may mean SKIP pending evidence,
+  never a fabricated negative benchmark or a security REJECT.
 - **REJECT**: an affirmative disqualifier supported by evidence, such as unsafe
   code, materially refuted claims, incompatible licensing or dead maintenance.
   State confidence, affected revision/components and the actual restriction.
@@ -33,6 +43,9 @@ not an empty assessment.
   the evaluator may impose on that clause alone. Project scope is no sandbox.
 
 Roll up counts **per target**, with separate delivery and content verdicts.
+Roll up only the targets this run was asked about or inferred; a prior verdict
+or another scope's state belongs in the explanation, never as an extra rollup
+row that reads as a verdict nobody requested.
 A multi-target run shares artifact checks; it does not duplicate every reader.
 Triaged-only entries are not deep-vet approvals. Proposed, tested, landed and
 runtime-verified are different states, not synonyms for ADOPT.
@@ -45,8 +58,8 @@ Reuse verified shared findings, not necessarily a previous fit conclusion.
 
 Every SKIP/REJECT records `Do-not-retry unless:` with observable predicates:
 changed candidate behavior, demonstrated new task need, unavailable incumbent,
-changed delivery cost, or a supported placement that solves the recorded
-objection. Bare time, enthusiasm and repeated asks alone are not evidence.
+changed delivery cost, a license grant obtained from the author, or a supported
+placement that solves the recorded objection. Bare time, enthusiasm and repeated asks alone are not evidence.
 A new target or task reopens **fit** when it changes those premises: a global
 SKIP for cost or no need does not veto a new project. Security findings remain
 applicable across targets until their cause is demonstrably removed. A
@@ -64,9 +77,12 @@ Review the changed assumptions, not the entire fleet at every model update.
 
 ## Eval note
 
-Use the harness's discovered note system, or a stated project report location
-when none exists. Index/cross-link it where future target vets will find it.
-Do not copy private project material into a public report or global memory.
+Land the note where a future vet of that target will search: the target's
+discoverable note system, or a stated committed report location when none
+exists. The agent's private per-project memory carries a pointer, not the
+note, unless the digest verified it is what that target's vets search.
+Index/cross-link it. Do not copy private project material into a public
+report or global memory.
 
 1. Source identity/revision, evidence links, target(s), concrete use case, and
    run choices: scope chosen/inferred, sweep coverage, landing depth.
@@ -92,9 +108,14 @@ Do not copy private project material into a public report or global memory.
 - [ ] Applied changes passed the target's review/testing conventions, with
       adversarial review for behavior-shaping ports and measured value or its
       explicit marker. Record proposed/PR/merged/runtime-verified separately.
-- [ ] Security-posture proposals name their target/config and await required
+- [ ] Security-posture proposals — including a target's first
+      instruction-loading surface — name their target/config and await required
       authorization. No global enabling, secret access or incidental cleanup
       followed merely from a local adoption recommendation.
+- [ ] Diverged copies were diffed and an authoritative copy named; no SKIP
+      rests on a diverged or unverified copy of the candidate at another
+      scope, and no verbatim copy is recommended without a license that
+      grants it.
 - [ ] The eval note and triggers exist where promised. Report-only/dry-run
       has no mandatory installs or external issues; issue-only/PR-only work
       records its actual unshipped state. Deferred work is tracked only within
