@@ -4,8 +4,8 @@ The receipts behind the default-SKIP prior and the supply-chain bar. Each
 claim carries its source and a status flag: **[peer-track]** (academic work,
 may still be preprint), **[vendor]** (company research or blog),
 **[measured-here]** (observed on the harness this skill was mined from,
-2026-07/08), **[directional]** (source too weak to carry a number — use the
-direction, drop the digits). SKILL.md's inline shorthand maps here as:
+2026-07 through 2026-09), **[directional]** (source too weak to carry a
+number — use the direction, drop the digits). SKILL.md's inline shorthand maps here as:
 [research] = [peer-track] or [vendor]; [measured] = [measured-here]. The
 dossier flag is the authoritative tier.
 
@@ -82,6 +82,28 @@ vetted sources" the convergence below is unusually strong.
 - Anthropic's official posture puts vetting on the operator: install skills
   only from trusted sources and audit the skill file plus bundled scripts —
   no platform sandboxing guarantee is claimed. [vendor]
+- A release pipeline can suppress its own integrity signals: one desktop
+  candidate set a null signing identity, disabled notarization, had CI *fail
+  the build if signed*, and self-updated silently on a 6h timer behind a
+  SHA-256 produced by that same pipeline. Deliberate suppression is the
+  signal — an unfunded project that merely lacks a certificate is not
+  [measured-here: local-mcp / chat-on-steroids vet, 2026-09].
+- Terms are the operator's call, and their own uptime is the evidence: the
+  same vet flagged a candidate's chatgpt.com automation as disqualifying on
+  OpenAI's terms while this harness's own terminal review gate drove the
+  same site the same way — 309 runs in 7 days, months of operation, one
+  anti-scraping trip ever (2026-07-03, under 3 parallel runs), no account
+  action. The vet had read phase 1's warning that same session and applied
+  the clause anyway. Where a verdict *does* rest on terms, its re-eval
+  trigger is a documented API, since commits cannot change what the terms
+  permit [measured-here: local-mcp / chat-on-steroids vet, 2026-09].
+- A sandbox is not all-or-nothing: that vet's candidate engaged Landlock and
+  blocked network egress correctly, yet two live probes escaped it because
+  the writable allow-list was derived from caller-supplied arguments (the
+  write target's parent directory; the caller's `cwd`). Working confinement
+  plus a caller-defined boundary is the shape to probe for — and it is a
+  reason not to run the artifact, not a reason to skip reading it
+  [measured-here: same vet].
 
 ## Method gates (mined from failed shortcuts)
 
@@ -102,3 +124,47 @@ vetted sources" the convergence below is unusually strong.
   self-validation or vendor-hosted, unreviewed PDFs get flagged and their
   digits excluded from verdicts — the flag itself goes in the eval note so
   the exclusion is auditable. [measured-here]
+
+
+## Scope-aware adoption: primary sources checked 2026-09-05
+
+These sources guide the v0.2 design; they are not measurements of this skill.
+Historical numbers above belong to their original studies and harness runs,
+not a guaranteed effect or a universal skill-count budget.
+
+- **Platform scope is source-specific.** The [Claude Code skills reference](https://code.claude.com/docs/en/skills) distinguishes personal, project,
+  managed, plugin and nested sources, along with precedence, activation and
+  hosted-session differences. A plugin namespace prevents some name conflicts,
+  not semantic duplication. Check the current host rather than freezing this
+  inventory as a portable law. [vendor]
+- **Progressive disclosure, not universal installation.** Anthropic's
+  [Agent Skills engineering guide](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
+  separates discovery metadata, the invoked body, references and executable
+  resources, and warns to inspect trusted provenance and bundled behavior.
+  Price these layers separately at the scope where they load. [vendor]
+- **Measure useful skills as well as clutter.** [SkillsBench](https://arxiv.org/abs/2602.12670) compares curated skills with matched
+  no-skill runs and deterministic task verifiers. Its current abstract reports
+  benefits that vary by model/harness and skill composition. This supports
+  target-task paired evaluation, not a blanket claim that skills hurt or help.
+  Results are study-specific; do not import their gains into this harness.
+  [peer-track]
+- **Composition is not availability.** [AgentSkillOS](https://arxiv.org/abs/2603.02176) reports structured composition outperforming
+  flat invocation with the same skill set, using model-judged artifact quality.
+  Its benchmark is not proof that every small project needs an orchestrator.
+  [peer-track]
+- **Instructions are operational supply-chain content.** [Agent Skill registry
+  attacks](https://arxiv.org/abs/2605.11418) studies metadata/instruction attacks
+  on discovery, selection and admission. Review whole instruction files and
+  execution surfaces; registry badges and benign descriptions are not enough.
+  Project-local loading does not make malicious instructions safe. [peer-track]
+- **Keep the mechanism small.** Anthropic's [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) recommends
+  the simplest system that works and adding complexity only when needed.
+  [Seeing like an agent](https://claude.com/blog/seeing-like-an-agent) describes
+  revisiting tool assumptions as models change. Recheck changed premises and
+  prefer native scoping/evaluation tools over another permanent service.
+  [vendor]
+
+The target/task applicability and cross-location note rules are this skill's
+engineering design, not a claimed vendor standard. The v0.2 regression cases
+exercise decision behavior; they do not prove SEO or estate-planning quality,
+actual runtime containment, or a general improvement across all harnesses.
