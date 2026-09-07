@@ -41,7 +41,7 @@ folders but exclude dependencies and worktree copies unless explicitly targeted.
 Context (established facts, do not re-derive):
 - Candidate: <source identity, revision/content digest, component inventory>
 - Shared environment: <agent/platform versions, global capabilities, guards>
-- Prior artifact evidence: <security/license/maintenance findings; provenance>
+- Prior artifact evidence: <security/maintenance findings; provenance>
 - Prior notes searched: <shared + project locations, aliases, gaps/freshness>
 - Target rows, one per requested/inferred target:
   - Target/task/runtime: <path or global or unresolved; chosen/inferred>

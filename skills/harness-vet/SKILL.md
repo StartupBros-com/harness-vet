@@ -76,41 +76,28 @@ Normalize the candidate into a scratch directory before any judgment:
   (a thread-fetch skill if one exists, else web fetch).
 - Paper → fetch abstract + full text; papers get the same vet as repos.
 - Paywalled or registry-only candidate → metadata often ships in the page
-  payload even when the body is gated (size, file count, license,
-  distribution policy — sometimes verdict-shaping on their own), and a
+  payload even when the body is gated (size, file count, dependencies —
+  sometimes verdict-shaping on their own), and a
   registry CLI's authenticated read beats scraping. Where install is the only
   read path: use a disposable environment, install, copy to scratch, uninstall
   there, then verify its pre-vet state was restored. Do not alter the live
   harness merely to inspect a candidate [measured: a registry
   install fanned out to five agent trees; the uninstall had to be verified
   across all five].
-- A candidate that is itself a list — entries independently sourced, licensed
-  and versioned (an awesome-repo, a marketplace of separate plugins) — gets a
+- A candidate that is itself a list — entries independently sourced and
+  versioned (an awesome-repo, a marketplace of separate plugins) — gets a
   two-stage vet: sweep readers — a lighter-weight variant of the Phase-3
   readers below, scoring every entry against the digest with no full report —
   triage the whole list, then at most 3 entries per run get the full phases
-  3-6. One repo, one manifest and one license bundling many components (a
+  3-6. One repo and one manifest bundling many components (a
   skill pack) is a multi-component candidate, not a list: phase 3 batches its
   components by subsystem under the reader cap, reads operator-named
   components in full first, and marks the rest triaged, not deep-vetted.
 - No candidate named → ask for one; this skill vets one candidate per run.
 
-Read the candidate's license and terms during intake — a genuine restriction
-on the operator's use is a verdict input, surfaced for the operator to weigh.
-Do not let a restrictive-sounding clause preempt the empirical evaluation the
-operator asked for [measured: a vet nearly rejected agent tooling over an
-anti-AI-lab rider on software its author ships for agent use — one question
-to the operator resolved what three review rounds could not]. Check the
-harness's own operating history against the same clause before treating it
-as disqualifying: where the operator already runs tooling of that class,
-their uptime is evidence about enforcement that the clause text is not
-[measured: a vet called a candidate's browser automation terms-violating
-while this harness's own terminal review gate drove the same site the same
-way — hundreds of runs, months, no account action]. No license at all is a
-different finding from a restrictive clause: with no grant, a verbatim copy
-(ADOPT, or ADAPT by copy-out) waits on permission the operator obtains from
-the author, while EXTRACT of a demonstrated pattern in the target's own words
-stays open. Record it as a licensing finding whose retry predicate is the grant.
+Licence and terms are not a vet input: whether the operator may use or
+redistribute a candidate is their call, not the evaluator's. Do not spend run
+time pricing them, and never turn a clause you noticed into a verdict.
 
 Then two lookups, both written down before reading further:
 
@@ -299,8 +286,7 @@ that target's vets are searched. Two hard edges:
   surface of any kind gets its first skills directory, rules file or plugin
   registration proposed with the exact path for the operator to create, not
   landed; adding to any existing surface is the routine now-tier path.
-  Preserve licenses, pinned provenance, local changes and an
-  update/rollback owner. Do not delete shadowed copies or migrate other
+  Preserve pinned provenance, local changes and an update/rollback owner. Do not delete shadowed copies or migrate other
   projects as an incidental cleanup; a consolidation the operator asked for is
   proposed with its evidence, not performed.
 - Cite shipped state from merged artifacts; drafts, and notes about drafts,

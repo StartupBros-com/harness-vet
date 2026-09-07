@@ -96,17 +96,6 @@
       ]
     },
     {
-      "id": "unlicensed-verbatim-copy",
-      "scenario": "An operator requests a report-only assessment of a single-file prompt skill, published as a public paste with no license file, no license statement and no repository, for a concrete unmet task in project-a. Source identity and content digest were recorded at the pinned revision. Review found no executable content and no safety, maintenance or quality disqualifier. The author is reachable but has not been asked for permission and no grant of any kind exists. The complete verified project-a digest shows no equivalent callable incumbent. Matched repeated bare/candidate tests show the skill's structural pattern, a fixed ordering of checks, improves the target task, with irrelevant-task controls passing; the same pattern can be expressed in project-a's own words without reproducing the author's text. Project-local placement of a skill is supported, and visibility, invocation and disable behavior were verified in fresh target and unrelated control sessions. All five price checks pass for a standalone project-local skill. The operator asked for the most useful recommendation available without a grant and has authorized no installation.",
-      "expected": [{ "target": "project-a", "verdict": "EXTRACT" }],
-      "forbidden_claims": [
-        "Absence of any license is merely an operator-weighed input that permits verbatim ADOPT or ADAPT copy-out now.",
-        "Absence of a license is a security or quality REJECT of the demonstrated pattern.",
-        "Supported project-local placement cures the missing grant.",
-        "This report-only recommendation means the pattern has been ported or the file copied."
-      ]
-    },
-    {
       "id": "same-skill-other-scope-reconcile",
       "scenario": "An operator requests a report-only assessment for project-a of a skill named by local path: the copy installed in the global user skills directory. The complete verified project-a digest finds a second copy of the same skill, by source identity, already inside project-a's own skills directory, whose reference sections differ from the global copy; both copies load in project-a sessions and the project copy takes precedence there. No other capability performs this task in project-a. The operator's stated goal is that the skill serve project-a only and stop loading in unrelated sessions. Both copies were read in full and diffed: the project copy carries the more recent verified edits and the global copy the original upstream pin. Artifact review of both revisions found no safety, licensing or maintenance disqualifier. Matched repeated tests show the skill improves the project-a task over the bare model, with controls passing. Fresh target and unrelated control sessions verified project-local visibility, invocation and disable behavior, and confirmed that the global copy is what loads in unrelated sessions. Provenance, update owner and rollback for one consolidated project-local copy are recorded. No change has been authorized.",
       "expected": [{ "target": "project-a", "verdict": "ADAPT" }],
