@@ -1,3 +1,53 @@
+# v0.2.2 verification receipt
+
+## Scope
+
+v0.2.2 removes licence and terms handling from the vet. Nothing in this
+harness gated on it: no hook, no script, no CI check, only prose. The first
+live run priced four candidates on licence status and changed the paperwork
+without changing a decision, then left a licence ask with a 30-day check-back
+behind. One line now states that licence and terms are not a vet input, so the
+removed reasoning cannot return as spontaneous caution. The `unlicensed-verbatim-copy`
+fixture was deleted with the rule it tested, taking the suite from 13 to 12.
+
+## Actual checks
+
+- Text audit: `grep -i` for licence and copyright across the four skill files
+  returns one line, the suppression line in SKILL.md. The other three return
+  zero. The repo's own LICENSE file is untouched.
+- Structural validation: 12 cases, unique ids, valid targets and verdicts.
+- Decision smoke, one round, three cases, each in a fresh session that read
+  only the four skill files and one scenario, with expected verdicts and
+  forbidden claims withheld, then graded by a separate reviewer against the
+  key. The three are the cases whose scenarios stipulate licence facts and
+  could therefore have shifted: `plugin-subset`, `skill-pack-named-subset`
+  and `native-project-plugin`. Result: 3 of 3 exact, 3 semantic PASS, no
+  forbidden claim asserted. The `native-project-plugin` answer states in its
+  own words that licence and terms are not a vet input and did not move its
+  verdict, which is the new line being applied rather than ignored.
+- Release contract green on the pull request, with VERSION and the plugin
+  manifest both reading 0.2.2.
+
+## What did not run or finish
+
+The other nine fixtures were not rerun. Their scenarios do not turn on licence
+facts, and rerunning the full suite was judged disproportionate for a removal.
+That is reduced coverage, stated rather than hidden: if a removal broke a case
+outside the three, this round would not have caught it.
+
+No paired comparison against v0.2.1 ran, so nothing here shows the vet decides
+better without licence handling, only that it decides the same on the cases
+that could have moved. No live scoped vet has run since v0.2.1.
+
+## Sources and reproducibility
+
+[The v0.2.1 rounds](scope-smoke-v0.2.1.json) remain as recorded, including the
+`unlicensed-verbatim-copy` answers from the fixture this release deletes. They
+are kept as history rather than rewritten. [The case instructions](README.md)
+describe how to repeat the smoke with answers withheld.
+
+---
+
 # v0.2.1 verification receipt
 
 The v0.2.0 receipt is preserved below this section. This one records only what
