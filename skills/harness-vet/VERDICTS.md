@@ -9,9 +9,7 @@ not an empty assessment.
 
 - **ADOPT**: use as-is at the recorded supported placement; verified utility
   exceeds target-specific cost. A native project install is ADOPT, not ADAPT
-  merely because it is narrower than global. A verbatim copy — here or by
-  ADAPT copy-out — needs a license that grants it; none means EXTRACT of a
-  demonstrated pattern, else SKIP pending the grant.
+  merely because it is narrower than global.
 - **ADAPT**: utility is demonstrated but delivery must change. Name the exact
   change: select permitted components, remove an updater, alter activation,
   patch/fork packaging, or convert a global-only installer to project-local.
@@ -37,10 +35,9 @@ not an empty assessment.
   recorded as covered. Insufficient verification may mean SKIP pending evidence,
   never a fabricated negative benchmark or a security REJECT.
 - **REJECT**: an affirmative disqualifier supported by evidence, such as unsafe
-  code, materially refuted claims, incompatible licensing or dead maintenance.
-  State confidence, affected revision/components and the actual restriction.
-  A platform's terms are an operator-weighed input from intake, not a verdict
-  the evaluator may impose on that clause alone. Project scope is no sandbox.
+  code, materially refuted claims or dead maintenance. State confidence,
+  affected revision/components and the actual defect. Project scope is no
+  sandbox.
 
 Roll up counts **per target**, with separate delivery and content verdicts.
 Roll up only the targets this run was asked about or inferred; a prior verdict
@@ -58,12 +55,11 @@ Reuse verified shared findings, not necessarily a previous fit conclusion.
 
 Every SKIP/REJECT records `Do-not-retry unless:` with observable predicates:
 changed candidate behavior, demonstrated new task need, unavailable incumbent,
-changed delivery cost, a license grant obtained from the author, or a supported
-placement that solves the recorded objection. Bare time, enthusiasm and repeated asks alone are not evidence.
+changed delivery cost, or a supported placement that solves the recorded
+objection. Bare time, enthusiasm and repeated asks alone are not evidence.
 A new target or task reopens **fit** when it changes those premises: a global
 SKIP for cost or no need does not veto a new project. Security findings remain
-applicable across targets until their cause is demonstrably removed. A
-licensing finding is reused only for the uses it actually restricts.
+applicable across targets until their cause is demonstrably removed.
 
 Legacy unscoped notes are evidence leads, not fleet-wide fit verdicts. Record
 search gaps and uncertain applicability; do not assert "never vetted" just
@@ -90,8 +86,8 @@ report or global memory.
    inferred controls, incomplete checks and limits of the evidence.
 3. Table: component | target | verdict | placement | activation | evidence |
    state. For skipped/rejected rows use no installation as the destination.
-4. For proposed changes: rationale, exact permitted files/config, provenance
-   and license, upstream pin, local adaptation, update owner and rollback.
+4. For proposed changes: rationale, exact permitted files/config, provenance,
+   upstream pin, local adaptation, update owner and rollback.
 5. Shared artifact findings versus target-specific fit findings, prior notes
    reused, applicability changes and searched/unavailable note locations.
 6. Audit dividend and scoped `Do-not-retry unless:` or re-audit triggers.
@@ -113,9 +109,7 @@ report or global memory.
       authorization. No global enabling, secret access or incidental cleanup
       followed merely from a local adoption recommendation.
 - [ ] Diverged copies were diffed and an authoritative copy named; no SKIP
-      rests on a diverged or unverified copy of the candidate at another
-      scope, and no verbatim copy is recommended without a license that
-      grants it.
+      rests on a diverged or unverified copy of the candidate at another scope.
 - [ ] The eval note and triggers exist where promised. Report-only/dry-run
       has no mandatory installs or external issues; issue-only/PR-only work
       records its actual unshipped state. Deferred work is tracked only within
