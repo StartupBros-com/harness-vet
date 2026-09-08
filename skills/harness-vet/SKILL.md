@@ -176,7 +176,14 @@ command the verifier ran. Empirical beats documentary:
   the incumbent arm settled both gating vets]. Use representative target tasks
   plus irrelevant-task controls to measure useful output and misrouting. Keep
   model/settings matched and report repeated runs when claiming improvement;
-  a single fixture is a smoke test. No incumbent means bare/candidate only.
+  a single fixture is a smoke test. Give each arm its own config directory
+  (`CLAUDE_CONFIG_DIR`, the pattern in
+  `claude/experiments/seo-arm-fixture-2026-09-05/run_arm.sh`) and log what each
+  arm reached, then diff those logs before scoring: a tool or skill one arm
+  could use and its siblings could not is a confound, and the claim it supports
+  drops to REFUTED or PARTIAL [measured: an unisolated runner let the host's
+  always-on skills into the bare control, so "tied with bare" meant nothing].
+  No incumbent means bare/candidate only.
   Unavailable tools, failed agent calls or missing credentials mean incomplete
   evidence, not that the candidate lost. Use synthetic data for sensitive
   domains; workflow success does not establish professional correctness.

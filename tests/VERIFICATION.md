@@ -1,3 +1,49 @@
+# v0.2.3 verification receipt
+
+## Scope
+
+v0.2.3 adds one sentence to phase 4's behavioral-test bullet. Until now the
+isolation requirement sat on the neighbouring bullet, the one about running a
+candidate's own test suite, so the arm-based comparison that actually decides
+prompt-skill verdicts carried no isolation requirement at all. The 2026-09-05
+SEO vet paid for that: its runner set no per-arm config directory, the host's
+always-on skills loaded into the bare control, and every SKIP resting on "tied
+with bare" rested on a contaminated comparison. The vet did not catch it.
+
+The sentence names `CLAUDE_CONFIG_DIR`, points at the runner that already
+implements the pattern, and states the check: diff the per-arm tool logs before
+scoring, and drop any claim a confound touches to REFUTED or PARTIAL. It is
+worth prose only because it points at a mechanism that exists; a sentence
+saying "isolate your arms" would have earned the same deletion v0.2.2 gave the
+licence handling.
+
+## Actual checks
+
+- Text audit: the addition lands inside the behavioral-test bullet. Phase 5's
+  "config is not proof" wording is untouched, so the two checks stay distinct.
+  A licence grep over the four files still returns exactly one line, the
+  suppression line, unchanged from v0.2.2.
+- Structural validation: 12 cases, unique ids. The suite is deliberately
+  unchanged; no fixture was added.
+- Release contract: VERSION and the plugin manifest both read 0.2.3.
+
+## What did not run or finish
+
+No decision smoke was rerun. No fixture scenario mentions arms, runners or
+config isolation, so no case could move, and rerunning twelve cases to watch
+them not move is the kind of ceremony this skill is supposed to refuse. That
+is reduced coverage, stated rather than hidden: if this wording somehow shifts
+a case, this round would not have caught it.
+
+The claim that isolation would have changed the 2026-09-05 verdicts is NOT
+made here. The defect count was saturated at 7 of 8 across all six arms, so
+the contaminated control probably changed nothing about that run's outcome. It
+changed what the run was entitled to claim.
+
+The eval-note index-refresh idea reviewed alongside this one was deliberately
+dropped. It was self-attestation that nothing checks, and the memory-dream
+pass already covers description-versus-body staleness on demand.
+
 # v0.2.2 verification receipt
 
 ## Scope
