@@ -184,6 +184,19 @@ command the verifier ran. Empirical beats documentary:
   drops to REFUTED or PARTIAL [measured: an unisolated runner let the host's
   always-on skills into the bare control, so "tied with bare" meant nothing].
   No incumbent means bare/candidate only.
+  Blind the arm before it runs: check every harness-authored label, file name,
+  directory name, and prompt line the arm can see for the words eval, test,
+  judge, rubric, score, compare, benchmark, candidate, and arena, and use
+  sanitized labels only; an arm that can tell it is being evaluated games the
+  fixture [measured: pstack vet, 2026-09-18, dotfiles#1202 item 8]. The check
+  scans for meta-disclosure, not the candidate's operational content: a
+  reference file inlined as the doctrine under test keeps its own name and
+  words (redacting it tests a hobbled skill, not the real one), and ordinary
+  task vocabulary that shares a substring, such as "tests" in a code-review
+  prompt, is not a hit. Grade from outputs against the key;
+  a transcript chain-fidelity check (which files the arm actually opened) is
+  not yet part of this protocol and is added the first time a self-report and
+  a transcript disagree.
   Unavailable tools, failed agent calls or missing credentials mean incomplete
   evidence, not that the candidate lost. Use synthetic data for sensitive
   domains; workflow success does not establish professional correctness.
@@ -195,6 +208,17 @@ command the verifier ran. Empirical beats documentary:
   directions: one mined probe showed a candidate guard passing 10/10 bypasses
   the host blocked, and the same vet's rule diff surfaced 6 gaps in the
   host's own denylist [measured].
+- A candidate that phones home gets its egress enumerated per CHANNEL, not per
+  documented control: intercept what the process actually sends — a shim on
+  `fetch`/`http(s).request`/socket for an interpreted runtime, a proxy or packet
+  capture for a compiled one — and read the raw bodies. Test each documented
+  opt-out alone AND combined; one control can quiet the noisy channels while the
+  identifying one keeps sending. Re-verify the surviving recipe under the wrapper
+  the target really invokes it with (task runner, CI, container), where an
+  env-var opt-out that passed at a bare shell can be stripped [measured:
+  react.doctor vet, 2026-09-20 — no single documented control closed all four
+  channels, and the vendor's documented env var left repo owner/name, HEAD SHA
+  and every file path uploading].
 - When the candidate describes a mechanism or failure mode, test your own
   harness for it — the audit dividend usually lives there [measured: 3 of 3
   dogfood runs; the third found a routing proxy silently dropping model
@@ -251,7 +275,11 @@ candidate at another scope):
   distributed binary, price the release pipeline too: signing deliberately
   suppressed, or an update path whose only integrity check is built by the
   pipeline that ships it, is a different finding from a project that simply
-  lacks a certificate [measured].
+  lacks a certificate [measured]. A generated or compiled CLI (mcporter
+  `--compile`, any codegen run against an MCP or OpenAPI endpoint) built
+  from a key-bearing URL bakes the credential into the artifact: treat the
+  generator's input URL as a secret and price the artifact as a credential
+  store, not a binary (2026-09-04 research-CLI vet).
 
 Done when: every component still alive after phase 4 has all five price
 checks answered in writing, with any tool-count price measured or marked
