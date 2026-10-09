@@ -126,3 +126,12 @@ An eventual behavioral result measures decision behavior on these supplied
 facts. Actual adoption still requires the current skill's artifact inspection,
 target-task evidence, price checks and fresh target/control runtime checks;
 fixture answers cannot establish those real-world results.
+
+## Announce pin CI regressions
+
+Run `python3 -m unittest discover -s tests -p 'test_*.py'` from the repository
+root. These standard-library tests execute the announce-pin shell step from
+the CI workflow with synthetic `gh` responses; they need no network, token or
+model calls. Equal workflow bytes report current, different bytes fail, and
+failed, empty or undecodable reads emit a skip notice without claiming the pin
+is current. Upstream outages remain nonblocking, as intended by the check.
