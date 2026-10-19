@@ -167,6 +167,26 @@ command the verifier ran. Empirical beats documentary:
 - Run the candidate's own tests and benchmarks in an isolated sandbox (fresh
   HOME, scratch env). A bench that won't compile or a test that OOMs is a
   verdict input [measured].
+- A detector candidate — anything that resolves project config to decide what
+  to check, then reports a count — gets a planted known-positive under the
+  target's real invocation: in the target repo, at its real CWD and config
+  paths, not copied-out files in a scratch harness. Partial discovery failure
+  is the dangerous case, since the tool still fires on what it can resolve and
+  returns a plausible count rather than an obvious zero [measured: shadcn/lint
+  vet, 2026-09-20, dotfiles#1239 — 32 findings with every app green against a
+  real 3,203; the second hit of EVIDENCE.md's "Instrument validity" gate].
+- A candidate shipping more checks than you will enable gets its subset chosen
+  by measured precision on the target repo: run the broad preset once on real
+  code, group hits by rule, sample each rule's hits, rank by
+  true-positives-in-reachable-code per hit. Two rankings look authoritative and
+  are not — the rules your planted-defect fixture caught (that fixture measures
+  DETECTION and must not also SELECT: it is bounded by the defects you thought
+  to plant, yet every rule in it carries a demonstrated true positive), and the
+  top rules by hit count (volume skews stylistic; a rule catching a real
+  structural bug fires a handful of times) [measured: react.doctor vet,
+  2026-09-20, pushbot#3508 — a 9-rule fixture-derived subset scored 4 true
+  positives in 44 findings, its top rule 1 in 33; two rules both rankings
+  missed found 6 real defects in 6 hits].
 - A prompt-skill or doctrine candidate gets the behavioral test: one
   planted-defect fixture (defects AND honest controls — false accusations
   count against an arm; the answer key stays with the judge), run bare, with
