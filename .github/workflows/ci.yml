@@ -1,7 +1,7 @@
 name: CI
 
-# A skill repo has no unit tests to run, but it does have a contract the
-# marketplace enforces at release time: VERSION, the plugin manifest, and the
+# This skill repo has offline CI regression tests and a release contract the
+# marketplace enforces: VERSION, the plugin manifest, and the
 # release tag move in lockstep, and the announce train stays on the shared
 # OIDC workflow. Checking it here means a mistake fails on the PR that causes
 # it, not silently after a release is already public.
@@ -67,6 +67,9 @@ jobs:
             exit 1
           }
 
+      - name: Announce pin check regression tests
+        run: python3 -m unittest discover -s tests -p 'test_*.py'
+
       # A well-formed SHA is not a working one. This repo sat on c981b872 while
       # the announce workflow moved to a version whose script mints its own OIDC
       # token from ACTIONS_ID_TOKEN_REQUEST_* -- env the old workflow never
@@ -88,11 +91,16 @@ jobs:
           [ -n "$pinned" ] || { echo "::error::no pinned announce workflow SHA found"; exit 1; }
 
           fetch() {
-            gh api "repos/StartupBros-com/hov-marketplace/contents/${path}?ref=$1" \
-              --jq '.content' 2>/dev/null | base64 -d 2>/dev/null | sha256sum | cut -d' ' -f1
+            local content
+            content="$(gh api "repos/StartupBros-com/hov-marketplace/contents/${path}?ref=$1" \
+              --jq '.content // empty' 2>/dev/null)" || return 1
+            [ -n "$content" ] || return 1
+            printf '%s' "$content" | base64 -d 2>/dev/null | sha256sum | cut -d' ' -f1
           }
-          pinned_hash="$(fetch "$pinned")" || true
-          main_hash="$(fetch main)" || true
+          # A failed pipeline can still print a hash of empty or partial bytes.
+          # Discard that hash so unreadable responses never claim a current pin.
+          pinned_hash="$(fetch "$pinned")" || pinned_hash=''
+          main_hash="$(fetch main)" || main_hash=''
           if [ -z "$pinned_hash" ] || [ -z "$main_hash" ]; then
             echo "::notice::could not read the announce workflow from the marketplace; skipping drift check"
             exit 0
