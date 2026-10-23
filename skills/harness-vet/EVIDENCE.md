@@ -112,7 +112,20 @@ vetted sources" the convergence below is unusually strong.
   (n.s.) once model drift was controlled. [measured-here]
 - **Instrument validity**: verify the detector before believing a zero — one
   audit's grep tool silently skipped hidden directories; never trust a
-  detector whose matches you have not read. [measured-here]
+  detector whose matches you have not read. [measured-here] A second,
+  independent hit of the same failure class, and the one that forced this gate
+  into the Verify phase: a lint plugin resolved the design system it checks
+  against from a config file that was not an ancestor of the app directories,
+  so discovery silently found nothing when it ran from there. It did not return
+  zero — rules still fired wherever they could resolve locally, giving a
+  plausible **32** findings with every app green under `--max-warnings 0`. The
+  real count, once the setting was declared explicitly, was **3,203**. Only a
+  planted known-positive caught it; every intermediate measurement was
+  self-consistent and reproducible. Partial discovery failure, not total
+  failure, is the dangerous shape: a broken detector that emits zero or an
+  error is self-evidently suspect, while one that emits a plausible low count
+  reads as a clean codebase. [measured-here: shadcn/lint vet, 2026-09-20,
+  dotfiles#1239]
 - **Numbers decay**: a merged PR's stated verification numbers failed to
   reproduce from its own squashed code weeks later; re-run before citing.
   [measured-here]
@@ -124,6 +137,22 @@ vetted sources" the convergence below is unusually strong.
   self-validation or vendor-hosted, unreviewed PDFs get flagged and their
   digits excluded from verdicts — the flag itself goes in the eval note so
   the exclusion is auditable. [measured-here]
+- **A documented opt-out is per-mechanism, not per-promise**: one vendor's
+  data-use page named an environment variable and a CLI flag as equivalent
+  opt-outs. Measured per channel on the same fixture, each control in
+  isolation, **no single documented control closed everything** — the env var
+  left the score upload (private repo owner/name, HEAD commit SHA, every
+  finding's file path) *and* the per-dependency lookups running; the flag
+  closed three of four but not the lookups; a committed config file closed the
+  opposite pair, leaving crash and trace telemetry live. They were separate
+  gate functions reading different inputs, so the names implied an equivalence
+  the wiring never had. Two further traps from the same run: the recipe that
+  did close everything was then stripped by the target's own task runner
+  (turbo 2.10.12, strict `envMode`, no `globalPassThroughEnv`), so a control
+  verified at a bare shell is not verified where it will run; and two of five
+  readers in that vet asserted the task runner defaulted to loose mode, which
+  a direct measurement and the runner's own `--dry=json` both refuted.
+  [measured-here: react.doctor vet, 2026-09-20, dotfiles#1227 / #1233 / #1234]
 
 
 ## Scope-aware adoption: primary sources checked 2026-09-05
@@ -168,3 +197,32 @@ The target/task applicability and cross-location note rules are this skill's
 engineering design, not a claimed vendor standard. The v0.2 regression cases
 exercise decision behavior; they do not prove SEO or estate-planning quality,
 actual runtime containment, or a general improvement across all harnesses.
+
+## Rule selection is a separate decision from instrument validity
+
+- A detector can be provably live and still be adopted wrong, because "does it
+  fire" and "which of its checks do we enable" are different questions. Measured
+  on `eslint-plugin-react-doctor` (906 rules; `configs.recommended` enables 566)
+  against `pushbot@packages/ui`, 2026-09-20: a 9-rule subset selected as "the
+  rules that caught planted defects" produced 44 findings of which **4** were
+  correct and in live code. Its dominant rule supplied 33 of the 44 and scored
+  **1**, in a component nothing imports; on one file its suggested fix would have
+  broken a working animation. Re-ranking the same broad run by sampled precision
+  surfaced two rules the original selection missed entirely, which found 6 real
+  defects in 6 hits — including five components defined during render that were
+  remounting a live application sidebar on every route change. Shipped as
+  pushbot#3508. [measured-here]
+- The two rankings that failed both look like evidence. A fixture-derived subset
+  carries a demonstrated true positive for every rule in it, and says nothing
+  about the rules never exercised; a frequency ranking of a broad run promotes
+  high-volume stylistic rules and buries structural ones (the rule that found the
+  worst defect fired 5 times and fell below the reporting cut, while the rule
+  with 1-in-33 precision ranked #2 by count). Agreement between the two is not
+  independent confirmation: neither measures whether a hit is a true positive.
+  [measured-here]
+- Corollary observed in the same pass: a claim that an existing rule "already
+  covers this" is worth one command. `react-hooks/static-components` was asserted
+  to catch the nested-component defect; run directly with a known-positive control
+  proving the rule was live, it found nothing on the affected file.
+  [measured-here]
+

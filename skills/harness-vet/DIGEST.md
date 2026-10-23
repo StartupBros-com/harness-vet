@@ -24,7 +24,12 @@ folders but exclude dependencies and worktree copies unless explicitly targeted.
   activation/name conflicts from semantic overlap. Record covering mechanism,
   invocation path, access and constraints. An off, inaccessible or unrelated
   project's skill is not coverage merely because its files exist, and neither
-  is the candidate's own copy at another scope.
+  is the candidate's own copy at another scope. Credential access counts the
+  same way: resolve it through the harness's documented per-task path (secrets
+  runbook, credential registry), not ambient env vars or a tool's own login,
+  which a harness may keep empty on purpose [measured: an empty env read as
+  "agents hold no Cloudflare credential" while four live tokens sat in the
+  secrets manager].
 - **Tooling and boundaries**: effective MCP/services, tool grants, hooks,
   permissions and sandboxing. Distinguish a requested permission from an
   observed effect. Scope/discovery restrictions are not execution containment.
