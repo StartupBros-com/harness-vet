@@ -143,7 +143,7 @@ rate-limited or unreachable source is written as `not searched:
 <lane/source>`, never left blank [measured: a blind probe with no X client
 missed the one X-only contender and wrote exactly that line]. An X query is
 two or three AND-groups, each an OR of the words posts use for that thing
-(`skill` among them when the candidate is a skill), and no group may require
+(`skill` among them when the job is a skill), and no group may require
 an output format or a library name: X matches every term against a short
 post, so a GitHub-shaped keyword string returns nothing [measured: six probe
 runs with X available wrote 21 X queries, every one carrying `SVG` and none
@@ -296,6 +296,17 @@ command the verifier ran. Empirical beats documentary:
   could use and its siblings could not is a confound, and the claim it supports
   drops to REFUTED or PARTIAL [measured: an unisolated runner let the host's
   always-on skills into the bare control, so "tied with bare" meant nothing].
+  When an arm, its regeneration step or the scorer can launch a browser, each
+  run and each scorer call also gets its own `XDG_CONFIG_HOME` and
+  `XDG_CACHE_HOME` under the run root: a config directory does not isolate a
+  browser, and neither does a scratch `--user-data-dir` [measured: in the
+  first live run, Chrome launched with only `--user-data-dir` kept writing
+  the operator's default profile's crash-reporter settings; with the XDG
+  pair set it wrote under the run root instead]. A runner forked from the
+  pattern keeps its non-zero exit on a failed invocation, or the batch is
+  accepted only from each run's status line, and the note says which
+  [measured: the live run's fork exited 0 on an error result; its status
+  lines, not its exit codes, showed all 24 runs ok].
   Log invocation separately from success: an arm that never opened its skill
   is a routing finding, not a quality finding.
   Blind the arm before it runs: check every harness-authored label, file name,
