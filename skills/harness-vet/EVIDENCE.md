@@ -329,6 +329,24 @@ measurements, not gates.
   group may require a format or library word; the discovery text now says
   so. Not re-measured: whether the rule holds on other tasks, and X results
   drift by the day, so the counts date this receipt. [measured-here]
+- **First live run, 2026-10-26, the `teardown` vet (harness-vet#25; note
+  `docs/vets/2026-10-26-teardown-harness-vet.md` in dotfiles, PR #2024).**
+  v0.3.0 text at `446464d`, read from the checkout. Discovery reached all
+  four probe key items for the first time: the X-only project came from the
+  first X query (three groups, the words posts use) and was dropped on
+  content; slate linework and anatomy with the third slot left empty; stop
+  (b), an incomplete search; the GitHub implementation cell overran the cap
+  by one and said so, as in every probe run. Phase 4: 24 runs, all ok,
+  N = 3 per arm per task, both-order judging, 108 judge calls. The
+  candidate lost 9 of 9 pen pairs to bare with both orders agreeing in 18
+  of 18 calls (re-tallied from `judge.tsv` by a second session), and sat at
+  0.50 on the displacement task; verdict SKIP, nothing installed; about
+  $35. Two isolation gaps, now in the phase-4 text (#27): a per-arm config
+  directory plus a scratch `--user-data-dir` still wrote the default Chrome
+  profile's crash-reporter settings until the XDG pair was set per run and
+  per scorer call, and the forked runner exited 0 on an error result. Not
+  measured: the contenders against bare (not predeclared), the viewer and
+  PDF paths, and egress by interception. [measured-here]
 
 ## Rule selection is a separate decision from instrument validity
 
