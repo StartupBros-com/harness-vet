@@ -299,8 +299,8 @@ measurements, not gates.
   and each run disclosed them in the cell's caps text and in the
   recommendation's not-searched clause. The X-only project was missed
   again in all three runs with X answering zero results on nearly every
-  query: six of six runs with X available, so on this task the X lane is
-  thin, not unreachable, and only the record shows it. Every run overran
+  query: six of six runs with X available. The lane was not thin; the
+  queries were the wrong shape (the next bullet). Every run overran
   the 4-query cell cap in at least one GitHub cell (multi-word `gh search`
   queries returned empty arrays and short retries followed) and one run
   ran a fifth pass; each overrun was disclosed in the record, so the cap
@@ -310,6 +310,25 @@ measurements, not gates.
   library in two, a diagram skill and a vector viewer once each): one run's
   slate is not the slate, which is the N>=3 rule applied to discovery
   itself. Same limits as above. [measured-here]
+- **X query shape, 2026-10-26, `search_posts_all` (full archive), same
+  task.** The six probe runs' 21 X queries (extracted from the two probe
+  records and counted by script): 19 were keyword strings of four to ten
+  terms, every one requiring `SVG`; the other two were three-group queries
+  with `SVG` inside an OR-group whose last group was `(LLM OR agent OR
+  Claude)` or `(Claude OR Codex OR agent)`; none of the 21 carried `skill`.
+  The X-only project's post says "skill" and "exploded-view illustration"
+  and never "SVG". Six queries run the same day, result count and whether
+  that post was in the results: `"exploded view" (illustration OR diagram) (agent OR
+  Claude OR skill) -is:retweet` 5, present (a live run's own first X query,
+  reproduced); the same with `SVG` in place of the second group, 4, absent;
+  the same with `skill` dropped from the third group, 4, absent; `"exploded
+  view" (illustration OR diagram) skill -is:retweet` 3, present; `"exploded
+  view" (skill OR agent) -is:retweet` 10 on the first page, absent from it;
+  a probe-style string `exploded view technical illustration SVG agent
+  generated parts labels` 0. So each group needs the word posts use and no
+  group may require a format or library word; the discovery text now says
+  so. Not re-measured: whether the rule holds on other tasks, and X results
+  drift by the day, so the counts date this receipt. [measured-here]
 
 ## Rule selection is a separate decision from instrument validity
 
