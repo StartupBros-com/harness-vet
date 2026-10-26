@@ -294,8 +294,10 @@ measurements, not gates.
   library and the hidden-line backend); 8, 11 and 10 unplanned relevant
   upstreams admitted; no query naming a key item in any lane cell
   (hit-derived queries were logged as passes, as the new rule says); no
-  proxy language; every record complete, with errored or rate-limited
-  GitHub cells written as not searched. The X-only project was missed
+  proxy language; every record complete. No cell fell to `not searched`:
+  the rate-limited GitHub queries sat in cells other queries had answered,
+  and each run disclosed them in the cell's caps text and in the
+  recommendation's not-searched clause. The X-only project was missed
   again in all three runs with X answering zero results on nearly every
   query: six of six runs with X available, so on this task the X lane is
   thin, not unreachable, and only the record shows it. Every run overran
