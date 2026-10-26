@@ -201,8 +201,10 @@ actual runtime containment, or a general improvement across all harnesses.
 ## Discovery and the comparison protocol: sources checked 2026-10-25
 
 These sources guide the v0.3.0 discovery step and the phase-4 protocol
-additions; the one measurement of this skill's own discovery text is the
-blind probe at the end of this section, and it is a measurement, not a gate.
+additions; the only measurements of this skill's own discovery text are the
+blind probes at the end of this section (the first on a draft shape, the
+second on the draft paragraphs, the third on the shipped ones), and they are
+measurements, not gates.
 
 - **Single-run deltas are inside the noise.** [On Randomness in Agentic
   Evals](https://arxiv.org/abs/2602.07150) reports, across 60,000
@@ -262,6 +264,50 @@ blind probe at the end of this section, and it is a measurement, not a gate.
   on one task, bounded by what the designer thought to plant (the same
   limit the fixture rule above states); it does not estimate recall over
   the unknown universe and did not select the design. [measured-here]
+- **Second blind probe, 2026-10-26, draft v0.3.0 paragraphs, X available.**
+  Same task and four-item key; three independent searchers each ran the
+  draft discovery paragraphs with no candidate named, under a 40-search-call
+  budget the probe imposed; one key-holding judge per record. Found 2, 2 and
+  1 of 4 (union 2: the skill and the library); 12, 7 and 9 unplanned
+  relevant upstreams admitted at triage; no proxy language in any contender
+  row. The X-only project was missed in all three runs although X answered
+  every query with zero or off-topic results, so the record shows a thin
+  lane, not an unreachable one, and the errored-source rule cannot catch
+  this; the hidden-line backend was missed in all three. The library was
+  reached from a name-free query in every run (a lane query in two, a pass
+  in one). The skill's two finds each carry a query naming it logged in a
+  lane cell, so those records cannot show whether the find was name-free;
+  the third run filed a name-bearing follow-up in a lane cell too, but its
+  name-free first hit was on record. One run slated a CAD module whose own
+  row said headless export was unsupported, a hard mismatch the text says
+  to drop. Lane cells ran up to 12 queries before passes began, and one run
+  hit the probe's call budget and had to file it under the access stop.
+  Four text changes followed: a 4-query cap per lane/source cell, a cell
+  covered only by its own queries from a source that answered, hit-derived
+  queries logged as pass queries, and a budget named in stop (c). The same
+  limits as the first probe apply: one task, a key bounded by what the
+  designer planted, no estimate of recall over the unknown universe.
+  [measured-here]
+- **Third blind probe, 2026-10-26, shipped v0.3.0 paragraphs, X
+  available.** Same task, key, call budget and judge; three searchers on
+  the text as shipped. Found 3, 2 and 1 of 4 (union 3: the skill, the
+  library and the hidden-line backend); 8, 11 and 10 unplanned relevant
+  upstreams admitted; no query naming a key item in any lane cell
+  (hit-derived queries were logged as passes, as the new rule says); no
+  proxy language; every record complete, with errored or rate-limited
+  GitHub cells written as not searched. The X-only project was missed
+  again in all three runs with X answering zero results on nearly every
+  query: six of six runs with X available, so on this task the X lane is
+  thin, not unreachable, and only the record shows it. Every run overran
+  the 4-query cell cap in at least one GitHub cell (multi-word `gh search`
+  queries returned empty arrays and short retries followed) and one run
+  ran a fifth pass; each overrun was disclosed in the record, so the cap
+  worked as a disclosure line, not a wall. One run said two of its queries
+  came from the searcher's own prior knowledge rather than a hit. The slate
+  differed by run (the skill in all three, the library in two, a CAD
+  library in two, a diagram skill and a vector viewer once each): one run's
+  slate is not the slate, which is the N>=3 rule applied to discovery
+  itself. Same limits as above. [measured-here]
 
 ## Rule selection is a separate decision from instrument validity
 

@@ -135,12 +135,13 @@ alternatives (other ways people do the task), implementation (the libraries,
 algorithms and native features underneath), experience (demos, comparisons,
 complaints, author threads) — over GitHub (`gh search`, `gh api`), the web,
 and X when a client is available, at most 4 queries per lane/source cell
-before passes begin, with at least one lane run with the candidate's name
-withheld. A cell is covered when its own queries yield a primary-source lead,
+before passes begin [measured: every probe run overran a GitHub cell after
+empty results, and the record said so each time], with at least one lane
+run with the candidate's name withheld. A cell is covered when its own queries yield a primary-source lead,
 or a no-results line from a source that answered without error; an errored,
 rate-limited or unreachable source is written as `not searched:
 <lane/source>`, never left blank [measured: a blind probe with no X client
-missed the one X-only contender and wrote exactly that line; three runs with
+missed the one X-only contender and wrote exactly that line; six runs with
 X available missed it too, and only the record's zero-result X lines showed
 the lane was thin]. Then follow leads in passes: a pass is a query set with a
 NEW seed — a term, dependency or project learned from a prior hit — at most
@@ -271,8 +272,9 @@ command the verifier ran. Empirical beats documentary:
   one control task the bare arm already solves: a skill can displace a
   stronger native strategy, and only that control shows it [research:
   SkillsBench — self-generated skills scored 8.1-11.5 pp BELOW no skill on
-  affected tasks]. Calibrate the fixture first: a bare arm at ceiling means "models
-  already do this", and no arm can show value on it; report the normalized
+  affected tasks]. Calibrate the fixture first: a bare arm at ceiling means
+  "models already do this", and no arm can show value on it; report the
+  normalized
   gain (arm minus bare, over one minus bare) beside the absolute delta.
   Keep model/settings matched. Run every arm at least 3 times and report
   the spread; a delta smaller than the run-to-run spread is noise, not a win
@@ -303,8 +305,9 @@ command the verifier ran. Empirical beats documentary:
   beside the win/loss. Where the harness ships a blind pairwise judge
   (skill-creator's `agents/comparator.md` is one), it is the paired
   instrument with that rule added — as shipped it judges once, in one order,
-  and tells the judge ties should be rare [research: position swaps flip most pairwise verdicts on hard tasks, and
-  verdicts change across identical replications at temperature 0; both-order
+  and tells the judge ties should be rare [research: position swaps flip
+  most pairwise verdicts on hard tasks, and verdicts change across identical
+  replications at temperature 0; both-order
   judging with conflicts recorded as ties is the AgentSkillOS protocol].
   Grade from outputs against the key;
   a transcript chain-fidelity check (which files the arm actually opened) is
