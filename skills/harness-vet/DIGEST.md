@@ -24,7 +24,11 @@ folders but exclude dependencies and worktree copies unless explicitly targeted.
   activation/name conflicts from semantic overlap. Record covering mechanism,
   invocation path, access and constraints. An off, inaccessible or unrelated
   project's skill is not coverage merely because its files exist, and neither
-  is the candidate's own copy at another scope. Credential access counts the
+  is the candidate's own copy at another scope. Record beside the incumbent
+  the contenders phase-1 discovery slated or triaged for this task, each at a
+  resolved revision (dropped ones stay in the Contenders row with their
+  reason), so readers and verifiers compare against the best of what exists
+  and not only against what is installed. Credential access counts the
   same way: resolve it through the harness's documented per-task path (secrets
   runbook, credential registry), not ambient env vars or a tool's own login,
   which a harness may keep empty on purpose [measured: an empty env read as
@@ -52,6 +56,9 @@ Context (established facts, do not re-derive):
   - Target/task/runtime: <path or global or unresolved; chosen/inferred>
   - Effective context: <global + local + nested/plugin sources and sizes>
   - Available incumbent: <mechanism, invocation/access, target-task coverage>
+  - Contenders: <upstream, revision, lane/pass that found it, substitute or
+    complement, slated | triaged | dropped(reason)> — content facts only; no
+    stars, likes, follower counts, recency or author reputation in this row
   - Placement/activation options: <verified controls, precedence, observed vs configured>
   - Delivery: <destination, review/testing tools, landing depth, update/rollback owner>
 - Local vet history: <counts if known; otherwise imported prior, not local data>

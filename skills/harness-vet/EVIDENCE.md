@@ -198,6 +198,119 @@ engineering design, not a claimed vendor standard. The v0.2 regression cases
 exercise decision behavior; they do not prove SEO or estate-planning quality,
 actual runtime containment, or a general improvement across all harnesses.
 
+## Discovery and the comparison protocol: sources checked 2026-10-25
+
+These sources guide the v0.3.0 discovery step and the phase-4 protocol
+additions; the only measurements of this skill's own discovery text are the
+blind probes at the end of this section (the first on a draft shape, the
+second on the draft paragraphs, the third on the shipped ones), and they are
+measurements, not gates.
+
+- **Single-run deltas are inside the noise.** [On Randomness in Agentic
+  Evals](https://arxiv.org/abs/2602.07150) reports, across 60,000
+  trajectories, single-run pass@1 estimates varying by 2.2-6.0 percentage
+  points, with standard deviations above 1.5 points even at temperature 0,
+  and recommends multiple runs per task. Phase 4 therefore runs every arm at
+  least 3 times and treats a delta below the run-to-run spread as noise.
+  [peer-track; abstract and introduction read]
+- **Pairwise verdicts flip with position.** [All Verdicts are Not
+  Equal](https://arxiv.org/abs/2610.12083) reports judge verdicts changing
+  across identical replications at temperature 0 and position swaps
+  flipping most verdicts on hard tasks, with holistic rubric scoring more
+  trustworthy than pairwise win rate. [AgentSkillOS](https://arxiv.org/abs/2603.02176)
+  judges every pair in both orderings and records conflicting preferences
+  as ties. Phase 4 adopts both-order judging with flips as ties and keeps
+  rubric scores beside the win/loss; skill-creator's `agents/comparator.md`
+  (read in full, 2026-10-25) judges once, in one order, and instructs the
+  judge that ties should be rare — it is the paired instrument only with
+  that rule added. [peer-track; vendor]
+- **A skill can displace a stronger native strategy.**
+  [SkillsBench](https://arxiv.org/abs/2602.12670) App. F reports
+  self-generated skills scoring 8.1-11.5 points BELOW the no-skill baseline
+  on affected tasks, with a heavyweight pipeline crowding out a simpler path
+  and activation displacing a native strategy as named harm patterns; App.
+  D.1 reports normalized gain (skill minus vanilla, over one minus vanilla)
+  to avoid ceiling artifacts, and deltas as paired differences on the same
+  task. Phase 4 adds one control task the bare arm already solves and
+  reports normalized gain beside the absolute delta. [peer-track; HTML read]
+- **Proxies steer selection.** [Agent Skill registry
+  attacks](https://arxiv.org/abs/2605.11418) reports functionally
+  equivalent skills chosen 77.6% of the time against a 50% chance baseline
+  when only the description text differed. The digest's contender row
+  therefore carries content facts only — no stars, likes, follower counts,
+  recency or author — so nothing downstream can rank on them. [peer-track]
+- **Non-discriminating items pad the denominator.** skill-creator's
+  `agents/analyzer.md` flags assertions that pass in every configuration as
+  unable to differentiate skill value; phase 4 drops fixture items that pass
+  or fail in every arm from the arm comparison. [vendor]
+- **Scanned and not borrowed.** An oracle-skill arm (per-arm config
+  isolation already forces each skill into its arm, so retrieval error is
+  not a variable here); the registry study's paired-choice description test
+  (a vet is not a registry choosing among near-duplicates, and phase 5's
+  supply-chain read covers injected description text); Bradley-Terry
+  aggregation (at most six arms on one fixture).
+- **Blind planted-positive probe, 2026-10-25.** One task (annotated,
+  editable vector technical illustrations with named parts), a four-item
+  key held by the judge and never shown to the searcher, the v1 discovery
+  shape with no X client. Found 2 of 4 (the candidate skill itself and one
+  programmatic SVG library) plus 6 unplanned relevant upstreams admitted at
+  triage; missed one X-only project (the record reads `not searched: lane
+  (c) / X`) and one reachable project (query wording). The candidate skill
+  appeared under seven listing sites and two names before dedup; the library
+  was reached only through vocabulary learned in the first follow-up pass;
+  `gh search repos` returned empty for every query, so GitHub coverage was
+  thin; the searcher overran its own 3-query cap by 2 and only the written
+  record showed it. This probe measures detection of partial search failure
+  on one task, bounded by what the designer thought to plant (the same
+  limit the fixture rule above states); it does not estimate recall over
+  the unknown universe and did not select the design. [measured-here]
+- **Second blind probe, 2026-10-26, draft v0.3.0 paragraphs, X available.**
+  Same task and four-item key; three independent searchers each ran the
+  draft discovery paragraphs with no candidate named, under a 40-search-call
+  budget the probe imposed; one key-holding judge per record. Found 2, 2 and
+  1 of 4 (union 2: the skill and the library); 12, 7 and 9 unplanned
+  relevant upstreams admitted at triage; no proxy language in any contender
+  row. The X-only project was missed in all three runs although X answered
+  every query with zero or off-topic results, so the record shows a thin
+  lane, not an unreachable one, and the errored-source rule cannot catch
+  this; the hidden-line backend was missed in all three. The library was
+  reached from a name-free query in every run (a lane query in two, a pass
+  in one). The skill's two finds each carry a query naming it logged in a
+  lane cell, so those records cannot show whether the find was name-free;
+  the third run filed a name-bearing follow-up in a lane cell too, but its
+  name-free first hit was on record. One run slated a CAD module whose own
+  row said headless export was unsupported, a hard mismatch the text says
+  to drop. Lane cells ran up to 12 queries before passes began, and one run
+  hit the probe's call budget and had to file it under the access stop.
+  Four text changes followed: a 4-query cap per lane/source cell, a cell
+  covered only by its own queries from a source that answered, hit-derived
+  queries logged as pass queries, and a budget named in stop (c). The same
+  limits as the first probe apply: one task, a key bounded by what the
+  designer planted, no estimate of recall over the unknown universe.
+  [measured-here]
+- **Third blind probe, 2026-10-26, shipped v0.3.0 paragraphs, X
+  available.** Same task, key, call budget and judge; three searchers on
+  the text as shipped. Found 3, 2 and 1 of 4 (union 3: the skill, the
+  library and the hidden-line backend); 8, 11 and 10 unplanned relevant
+  upstreams admitted; no query naming a key item in any lane cell
+  (hit-derived queries were logged as passes, as the new rule says); no
+  proxy language; every record complete. No cell fell to `not searched`:
+  the rate-limited GitHub queries sat in cells other queries had answered,
+  and each run disclosed them in the cell's caps text and in the
+  recommendation's not-searched clause. The X-only project was missed
+  again in all three runs with X answering zero results on nearly every
+  query: six of six runs with X available, so on this task the X lane is
+  thin, not unreachable, and only the record shows it. Every run overran
+  the 4-query cell cap in at least one GitHub cell (multi-word `gh search`
+  queries returned empty arrays and short retries followed) and one run
+  ran a fifth pass; each overrun was disclosed in the record, so the cap
+  worked as a disclosure line, not a wall. One run said two of its queries
+  came from the searcher's own prior knowledge rather than a hit. The slate
+  differed by run (the skill in all three, the library in two, a CAD
+  library in two, a diagram skill and a vector viewer once each): one run's
+  slate is not the slate, which is the N>=3 rule applied to discovery
+  itself. Same limits as above. [measured-here]
+
 ## Rule selection is a separate decision from instrument validity
 
 - A detector can be provably live and still be adopted wrong, because "does it

@@ -32,12 +32,26 @@ not an empty assessment.
   placement question, not an incumbent: where the copies diverge, or the
   operator asked to narrow where it loads, reconcile (ADAPT); only an
   undiverged copy verified to serve this target, with no narrowing asked, is
-  recorded as covered. Insufficient verification may mean SKIP pending evidence,
-  never a fabricated negative benchmark or a security REJECT.
+  recorded as covered. "Covered" ends the comparison only after every
+  contender the digest slates has run in the same phase-4 arms, or is
+  recorded PARTIAL with its deciding run named; a PARTIAL contender backs
+  neither SKIP-as-covered nor ADOPT/ADAPT, for itself or for the candidate
+  over it (SKIP pending the named run). Insufficient verification may
+  mean SKIP pending evidence, never a fabricated negative benchmark or a
+  security REJECT.
 - **REJECT**: an affirmative disqualifier supported by evidence, such as unsafe
   code, materially refuted claims or dead maintenance. State confidence,
   affected revision/components and the actual defect. Project scope is no
   sandbox.
+
+Depending on an upstream entirely is ADOPT with the eval note's upstream pin
+and update owner set to that upstream; vendoring it is ADAPT with the local
+adaptation recorded; cherry-picking is EXTRACT. A slated contender gets
+phase 3's full read of its instructions and executables before its arm
+runs, and one that reaches ADOPT or ADAPT passes the same phase-5 checks as
+a supplied candidate; a dropped hit gets no verdict because nothing of it is
+adopted. Verdicts may mix across upstreams — ADOPT one and EXTRACT from
+another — when the evidence does.
 
 Roll up counts **per target**, with separate delivery and content verdicts.
 Roll up only the targets this run was asked about or inferred; a prior verdict
@@ -81,15 +95,20 @@ Index/cross-link it. Do not copy private project material into a public
 report or global memory.
 
 1. Source identity/revision, evidence links, target(s), concrete use case, and
-   run choices: scope chosen/inferred, sweep coverage, landing depth.
+   run choices: scope chosen/inferred, sweep coverage, landing depth, and the
+   external-discovery record: each lane/source searched or `not searched`,
+   each pass's seed and queries, and the stop that fired.
 2. `Measured, not inferred:` commands/results, model/runtime, tested vs
    inferred controls, incomplete checks and limits of the evidence.
 3. Table: component | target | verdict | placement | activation | evidence |
    state. For skipped/rejected rows use no installation as the destination.
+   Discovered contenders get rows too, including those triaged and not
+   deep-vetted, with the lane/pass that found each.
 4. For proposed changes: rationale, exact permitted files/config, provenance,
    upstream pin, local adaptation, update owner and rollback.
 5. Shared artifact findings versus target-specific fit findings, prior notes
-   reused, applicability changes and searched/unavailable note locations.
+   reused, applicability changes and searched/unavailable note locations;
+   discovery hits dropped at triage, each with its one-line reason.
 6. Audit dividend and scoped `Do-not-retry unless:` or re-audit triggers.
 
 ## Closing checklist
@@ -116,3 +135,9 @@ report or global memory.
       the authorized landing mode.
 - [ ] Claims of shipment cite merged artifacts; tests, drafts and release
       preparation are not deployment evidence.
+- [ ] The discovery record names every lane/source as searched or `not
+      searched`, each pass's seed and queries, and the stop that fired; every
+      triaged contender has a row with its lane/pass and every dropped hit a
+      one-line reason; no recommendation claims exhaustive coverage, and no
+      slated contender is missing from the phase-4 arms without a PARTIAL row
+      naming its deciding run.

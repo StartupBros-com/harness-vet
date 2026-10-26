@@ -1,7 +1,7 @@
 # Scope decision fixtures
 
-[`scope_cases.json`](scope_cases.json) contains twelve independent behavioral
-fixtures for the v0.2.0 through v0.2.2 scope decisions in
+[`scope_cases.json`](scope_cases.json) contains thirteen independent behavioral
+fixtures for the v0.2.0 through v0.3.0 scope decisions in
 [`SKILL.md`](../skills/harness-vet/SKILL.md),
 [`DIGEST.md`](../skills/harness-vet/DIGEST.md),
 [`EVIDENCE.md`](../skills/harness-vet/EVIDENCE.md) and
@@ -14,7 +14,10 @@ The four surviving v0.2.1 cases (the candidate's own copy at another scope, a
 target's first instruction surface, an unmeasured tool-heavy MCP server, a
 skill pack with operator-named skills) plus the eight v0.2.0 cases were run
 against the v0.2.1 files; v0.2.2 removed a fifth, an unlicensed verbatim copy,
-together with the licence rule it tested. See
+together with the licence rule it tested. v0.3.0 adds a thirteenth case, a
+discovered contender slated with no incumbent, whose planted wrong answer
+is SKIP-as-covered; it has had structural validation only, no fresh-model
+smoke, as of this revision. See
 [the v0.2.1 receipt](scope-smoke-v0.2.1.json) and [VERIFICATION.md](VERIFICATION.md).
 Their scenarios stipulate synthetic observations so a model can make a decision
 without external access. Statements that a scenario's runtime checks passed
@@ -56,7 +59,7 @@ const ids = new Set();
 fields(fixture, ['schema_version', 'cases']);
 assert.equal(fixture.schema_version, 1);
 assert(Array.isArray(fixture.cases));
-assert.equal(fixture.cases.length, 12);
+assert.equal(fixture.cases.length, 13);
 for (const item of fixture.cases) {
   fields(item, ['id', 'scenario', 'expected', 'forbidden_claims']);
   assert(nonempty(item.id));
