@@ -141,9 +141,16 @@ run with the candidate's name withheld. A cell is covered when its own queries y
 or a no-results line from a source that answered without error; an errored,
 rate-limited or unreachable source is written as `not searched:
 <lane/source>`, never left blank [measured: a blind probe with no X client
-missed the one X-only contender and wrote exactly that line; six runs with
-X available missed it too, and only the record's zero-result X lines showed
-the lane was thin]. Then follow leads in passes: a pass is a query set with a
+missed the one X-only contender and wrote exactly that line]. An X query is
+two or three AND-groups, each an OR of the words posts use for that thing
+(`skill` among them when the candidate is a skill), and no group may require
+an output format or a library name: X matches every term against a short
+post, so a GitHub-shaped keyword string returns nothing [measured: six probe
+runs with X available wrote 21 X queries, every one carrying `SVG` and none
+carrying `skill`, got zero results on nearly every one and missed the X-only
+contender every time; on the same day a three-group query found it in 5
+results, and requiring `SVG` or dropping `skill` from its group each made
+it vanish]. Then follow leads in passes: a pass is a query set with a
 NEW seed — a term, dependency or project learned from a prior hit — at most
 4 passes of at most 4 queries, at least one pass seeded from the
 name-withheld lane so the candidate's own vocabulary does not steer every
