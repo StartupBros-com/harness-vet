@@ -16,8 +16,16 @@ skill pack with operator-named skills) plus the eight v0.2.0 cases were run
 against the v0.2.1 files; v0.2.2 removed a fifth, an unlicensed verbatim copy,
 together with the licence rule it tested. v0.3.0 adds a thirteenth case, a
 discovered contender slated with no incumbent, whose planted wrong answer
-is SKIP-as-covered; it has had structural validation only, no fresh-model
-smoke, as of this revision. See
+is SKIP-as-covered. The case itself has had structural validation only, no
+fresh-model smoke, as of this revision. The protocol path it encodes has run
+once live, in [#25](https://github.com/StartupBros-com/harness-vet/issues/25):
+a vet of jakubkrehel/skills `teardown` under the v0.3.0 text, where discovery
+slated two contenders with no incumbent and phase 4 ran bare, the candidate and
+both contenders as isolated arms, three runs each, under a both-order judge.
+That run ended SKIP because the candidate lost every representative-task pair
+to bare, not SKIP-as-covered, so it never faced the case's choice between ADOPT
+and SKIP-as-covered. It shows the path runs end to end on a real candidate; it
+is not a smoke of the case. See
 [the v0.2.1 receipt](scope-smoke-v0.2.1.json) and [VERIFICATION.md](VERIFICATION.md).
 Their scenarios stipulate synthetic observations so a model can make a decision
 without external access. Statements that a scenario's runtime checks passed
