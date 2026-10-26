@@ -138,9 +138,9 @@ prior hit — at most 4 passes of at most 4 queries, at least one pass seeded
 from the name-withheld lane so the candidate's own vocabulary does not steer
 every follow-up [measured: the one library contender with the task's output
 type was reached only through vocabulary learned in the first pass]. Stop
-when (a) two
-consecutive passes admit nothing to the triaged set, (b) the pass ceiling, or
-(c) access ends the search; record which fired, and report (b) and (c) as
+when (a) two consecutive passes admit nothing to the triaged set, (b) the
+pass ceiling, or (c) access ends the search; record which fired, and report
+(b) and (c) as
 incomplete search, never as convergence. A full deep-vet slate does not stop
 discovery: the triaged set keeps growing and the slate cap (above) decides
 what is deep-vetted, with the excess disclosed. Before counting, collapse
