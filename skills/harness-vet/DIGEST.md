@@ -25,8 +25,9 @@ folders but exclude dependencies and worktree copies unless explicitly targeted.
   invocation path, access and constraints. An off, inaccessible or unrelated
   project's skill is not coverage merely because its files exist, and neither
   is the candidate's own copy at another scope. Record beside the incumbent
-  the contenders phase-1 discovery slated for this task, each at a resolved
-  revision, so readers and verifiers compare against the best of what exists
+  the contenders phase-1 discovery slated or triaged for this task, each at a
+  resolved revision (dropped ones stay in the Contenders row with their
+  reason), so readers and verifiers compare against the best of what exists
   and not only against what is installed. Credential access counts the
   same way: resolve it through the harness's documented per-task path (secrets
   runbook, credential registry), not ambient env vars or a tool's own login,

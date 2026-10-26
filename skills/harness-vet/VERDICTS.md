@@ -35,7 +35,8 @@ not an empty assessment.
   recorded as covered. "Covered" ends the comparison only after every
   contender the digest slates has run in the same phase-4 arms, or is
   recorded PARTIAL with its deciding run named; a PARTIAL contender backs
-  neither SKIP-as-covered nor ADOPT/ADAPT. Insufficient verification may
+  neither SKIP-as-covered nor ADOPT/ADAPT, for itself or for the candidate
+  over it (SKIP pending the named run). Insufficient verification may
   mean SKIP pending evidence, never a fabricated negative benchmark or a
   security REJECT.
 - **REJECT**: an affirmative disqualifier supported by evidence, such as unsafe
@@ -45,11 +46,12 @@ not an empty assessment.
 
 Depending on an upstream entirely is ADOPT with the eval note's upstream pin
 and update owner set to that upstream; vendoring it is ADAPT with the local
-adaptation recorded; cherry-picking is EXTRACT. A discovered contender that
-reaches ADOPT or ADAPT passes the same phase-5 checks as a supplied
-candidate; a dropped hit gets no verdict because nothing of it is adopted.
-The usual shape is ADOPT one upstream plus EXTRACT from another, and the
-recommendation names the N upstreams examined and what was not searched.
+adaptation recorded; cherry-picking is EXTRACT. A slated contender gets
+phase 3's full read of its instructions and executables before its arm
+runs, and one that reaches ADOPT or ADAPT passes the same phase-5 checks as
+a supplied candidate; a dropped hit gets no verdict because nothing of it is
+adopted. Verdicts may mix across upstreams — ADOPT one and EXTRACT from
+another — when the evidence does.
 
 Roll up counts **per target**, with separate delivery and content verdicts.
 Roll up only the targets this run was asked about or inferred; a prior verdict
@@ -93,9 +95,9 @@ Index/cross-link it. Do not copy private project material into a public
 report or global memory.
 
 1. Source identity/revision, evidence links, target(s), concrete use case, and
-   run choices: scope chosen/inferred, sweep coverage, landing depth. Sweep
-   coverage includes the discovery record: each lane/source searched or
-   `not searched`, each pass's seed and queries, and the stop that fired.
+   run choices: scope chosen/inferred, sweep coverage, landing depth, and the
+   external-discovery record: each lane/source searched or `not searched`,
+   each pass's seed and queries, and the stop that fired.
 2. `Measured, not inferred:` commands/results, model/runtime, tested vs
    inferred controls, incomplete checks and limits of the evidence.
 3. Table: component | target | verdict | placement | activation | evidence |
@@ -134,6 +136,8 @@ report or global memory.
 - [ ] Claims of shipment cite merged artifacts; tests, drafts and release
       preparation are not deployment evidence.
 - [ ] The discovery record names every lane/source as searched or `not
-      searched` and the stop that fired; no recommendation claims exhaustive
-      coverage, and no slated contender is missing from the phase-4 arms
-      without a PARTIAL row naming its deciding run.
+      searched`, each pass's seed and queries, and the stop that fired; every
+      triaged contender has a row with its lane/pass and every dropped hit a
+      one-line reason; no recommendation claims exhaustive coverage, and no
+      slated contender is missing from the phase-4 arms without a PARTIAL row
+      naming its deciding run.

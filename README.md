@@ -68,13 +68,15 @@ From the [House of Vibe marketplace](https://github.com/StartupBros-com/hov-mark
 /plugin install harness-vet@hov
 ```
 
-Then: `/harness-vet <repo-url | local-path | post-or-paper-link>`
+Then: `/harness-vet <repo-url | local-path | post-or-paper-link>`, or
+`/harness-vet <concrete task> for <project-path>` to find and compare what
+exists for a task with no candidate in hand.
 
 The skill is user-invoked only (`disable-model-invocation: true`). Price actual discovery metadata and invoked content according to the host's behavior instead of assuming that every installed source has the same exposure.
 
 ## Scoped invocations
 
-The argument hint is `<candidate> [for <project-path> ... | global] [report-only]`. Candidate inputs remain repo URLs, local paths, social posts, papers and registry entries. These are agent invocations, not shell commands; replace placeholders and verify project paths exist.
+The argument hint is `<candidate | concrete task> [for <project-path> ... | global] [report-only]`. Candidate inputs remain repo URLs, local paths, social posts, papers and registry entries. These are agent invocations, not shell commands; replace placeholders and verify project paths exist.
 
 ```text
 /harness-vet <candidate> for <project-path> report-only
@@ -93,7 +95,7 @@ Large list-candidates (entries independently sourced and versioned) receive whol
 
 ## Behavioral fixtures
 
-The thirteen authored [scope cases](tests/scope_cases.json) cover global versus project fit, callable incumbents, unavailable copies, retained security findings, multiple targets, unresolved destinations, both plugin delivery choices, the candidate's own copy at another scope, a target's first instruction surface, an unmeasured tool-heavy MCP server, a skill pack with operator-named skills, and a discovered contender slated with no incumbent. [Fixture instructions](tests/README.md) explain structural validation and evaluation with a fresh model session per case, withholding `expected` and `forbidden_claims` from the evaluated model. In v0.2.1 the smoke ran three rounds over all thirteen cases: 10, then 12, then 13 of 13 exact, with the two failures kept visible and the doctrine changed once in response to each. [The v0.2.1 rounds](tests/scope-smoke-v0.2.1.json) record every answer, every reviewer note and the SHA-256 of the four shipped files; [the v0.2.0 responses](tests/scope-smoke-final.json) and [its initial failures](tests/scope-smoke-results.json) remain visible, and [VERIFICATION.md](tests/VERIFICATION.md) states what each round did and did not establish. These synthetic decisions do not establish runtime isolation, estate-planning quality, statistical improvement or release deployment.
+The thirteen authored [scope cases](tests/scope_cases.json) cover global versus project fit, callable incumbents, unavailable copies, retained security findings, multiple targets, unresolved destinations, both plugin delivery choices, the candidate's own copy at another scope, a target's first instruction surface, an unmeasured tool-heavy MCP server, a skill pack with operator-named skills, and a discovered contender slated with no incumbent. [Fixture instructions](tests/README.md) explain structural validation and evaluation with a fresh model session per case, withholding `expected` and `forbidden_claims` from the evaluated model. In v0.2.1 the smoke ran three rounds over that revision's thirteen cases (twelve of today's plus the since-removed licence case): 10, then 12, then 13 of 13 exact, with the two failures kept visible and the doctrine changed once in response to each; the v0.3.0 discovery case has had structural validation only, no fresh-model smoke. [The v0.2.1 rounds](tests/scope-smoke-v0.2.1.json) record every answer, every reviewer note and the SHA-256 of the four shipped files; [the v0.2.0 responses](tests/scope-smoke-final.json) and [its initial failures](tests/scope-smoke-results.json) remain visible, and [VERIFICATION.md](tests/VERIFICATION.md) states what each round did and did not establish. These synthetic decisions do not establish runtime isolation, estate-planning quality, statistical improvement or release deployment.
 
 ## What this is not
 
