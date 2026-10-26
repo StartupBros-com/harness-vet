@@ -198,6 +198,71 @@ engineering design, not a claimed vendor standard. The v0.2 regression cases
 exercise decision behavior; they do not prove SEO or estate-planning quality,
 actual runtime containment, or a general improvement across all harnesses.
 
+## Discovery and the comparison protocol: sources checked 2026-10-25
+
+These sources guide the v0.3.0 discovery step and the phase-4 protocol
+additions; the one measurement of this skill's own discovery text is the
+blind probe at the end of this section, and it is a measurement, not a gate.
+
+- **Single-run deltas are inside the noise.** [On Randomness in Agentic
+  Evals](https://arxiv.org/abs/2602.07150) reports, across 60,000
+  trajectories, single-run pass@1 estimates varying by 2.2-6.0 percentage
+  points, with standard deviations above 1.5 points even at temperature 0,
+  and recommends multiple runs per task. Phase 4 therefore runs every arm at
+  least 3 times and treats a delta below the run-to-run spread as noise.
+  [peer-track; abstract and introduction read]
+- **Pairwise verdicts flip with position.** [All Verdicts are Not
+  Equal](https://arxiv.org/abs/2610.12083) reports judge verdicts changing
+  across identical replications at temperature 0 and position swaps
+  flipping most verdicts on hard tasks, with holistic rubric scoring more
+  trustworthy than pairwise win rate. [AgentSkillOS](https://arxiv.org/abs/2603.02176)
+  judges every pair in both orderings and records conflicting preferences
+  as ties. Phase 4 adopts both-order judging with flips as ties and keeps
+  rubric scores beside the win/loss; skill-creator's `agents/comparator.md`
+  (read in full, 2026-10-25) judges once, in one order, and instructs the
+  judge that ties should be rare — it is the paired instrument only with
+  that rule added. [peer-track; vendor]
+- **A skill can displace a stronger native strategy.**
+  [SkillsBench](https://arxiv.org/abs/2602.12670) App. F reports
+  self-generated skills scoring 8.1-11.5 points BELOW the no-skill baseline
+  on affected tasks, with a heavyweight pipeline crowding out a simpler path
+  and activation displacing a native strategy as named harm patterns; App.
+  D.1 reports normalized gain (skill minus vanilla, over one minus vanilla)
+  to avoid ceiling artifacts, and deltas as paired differences on the same
+  task. Phase 4 adds one control task the bare arm already solves and
+  reports normalized gain beside the absolute delta. [peer-track; HTML read]
+- **Proxies steer selection.** [Agent Skill registry
+  attacks](https://arxiv.org/abs/2605.11418) reports functionally
+  equivalent skills chosen 77.6% of the time against a 50% chance baseline
+  when only the description text differed. The digest's contender row
+  therefore carries content facts only — no stars, likes, follower counts,
+  recency or author — so nothing downstream can rank on them. [peer-track]
+- **Non-discriminating items pad the denominator.** skill-creator's
+  `agents/analyzer.md` flags assertions that pass in every configuration as
+  unable to differentiate skill value; phase 4 drops fixture items that pass
+  or fail in every arm from the arm comparison. [vendor]
+- **Scanned and not borrowed.** An oracle-skill arm (per-arm config
+  isolation already forces each skill into its arm, so retrieval error is
+  not a variable here); the registry study's paired-choice description test
+  (a vet is not a registry choosing among near-duplicates, and phase 5's
+  supply-chain read covers injected description text); Bradley-Terry
+  aggregation (at most six arms on one fixture).
+- **Blind planted-positive probe, 2026-10-25.** One task (annotated,
+  editable vector technical illustrations with named parts), a four-item
+  key held by the judge and never shown to the searcher, the v1 discovery
+  shape with no X client. Found 2 of 4 (the candidate skill itself and one
+  programmatic SVG library) plus 6 unplanned relevant upstreams admitted at
+  triage; missed one X-only project (the record reads `not searched: lane
+  (c) / X`) and one reachable project (query wording). The candidate skill
+  appeared under seven listing sites and two names before dedup; the library
+  was reached only through vocabulary learned in the first follow-up pass;
+  `gh search repos` returned empty for every query, so GitHub coverage was
+  thin; the searcher overran its own 3-query cap by 2 and only the written
+  record showed it. This probe measures detection of partial search failure
+  on one task, bounded by what the designer thought to plant (the same
+  limit the fixture rule above states); it does not estimate recall over
+  the unknown universe and did not select the design. [measured-here]
+
 ## Rule selection is a separate decision from instrument validity
 
 - A detector can be provably live and still be adopted wrong, because "does it

@@ -136,8 +136,9 @@ contender and wrote exactly that line]. Then follow leads in passes: a pass
 is a query set with a NEW seed — a term, dependency or project learned from a
 prior hit — at most 4 passes of at most 4 queries, at least one pass seeded
 from the name-withheld lane so the candidate's own vocabulary does not steer
-every follow-up [measured: the strongest non-skill contender was reachable
-only through vocabulary learned in the first pass]. Stop when (a) two
+every follow-up [measured: the one library contender with the task's output
+type was reached only through vocabulary learned in the first pass]. Stop
+when (a) two
 consecutive passes admit nothing to the triaged set, (b) the pass ceiling, or
 (c) access ends the search; record which fired, and report (b) and (c) as
 incomplete search, never as convergence. A full deep-vet slate does not stop
